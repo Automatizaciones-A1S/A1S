@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PQRS · A1S Security Group</title>
+<meta name="description" content="Radica tu Petición, Queja, Reclamo, Sugerencia, Felicitación o Denuncia ante A1S Security Group. Atención a clientes, colaboradores y terceros.">
+<link rel="stylesheet" href="styles/styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: inherit; }
+  ::selection { background: var(--a1s-red); color: #fff; }
+  h1, h2, h3, h4 { margin: 0; }
+  .wrap { width: min(1180px, 100% - 2 * clamp(20px, 5vw, 64px)); margin-inline: auto; }
+
+  /* ── Header ── */
+  .pq-head { position: sticky; top: 0; z-index: 40; background: rgba(10,10,12,.82);
+    backdrop-filter: saturate(150%) blur(14px); border-bottom: 1px solid var(--dark-line); }
+  .pq-head__in { display: flex; align-items: center; gap: 18px; height: 76px; }
+  .pq-head .pq-logo { display: flex; align-items: center; }
+  .pq-head .pq-logo img { height: 50px; width: auto; display: block; }
+  @media (max-width: 620px) { .pq-head .pq-logo img { height: 40px; } }
+  .pq-head .pq-back { margin-left: auto; color: var(--dark-muted); font-size: .9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color .2s; }
+  .pq-head .pq-back:hover { color: #fff; }
+
+  /* ── Hero ── */
+  .pq-hero { position: relative; overflow: hidden; background:
+    radial-gradient(60% 80% at 82% 8%, rgba(192,35,27,.22), transparent 58%), #0A0A0C; color: #fff;
+    padding: clamp(48px, 8vw, 86px) 0 clamp(40px, 6vw, 64px); }
+  .pq-hero__grid { position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 54px),
+                repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 54px); }
+  .pq-hero__radar { position: absolute; right: -10%; top: -30%; width: 60vw; aspect-ratio: 1; pointer-events: none;
+    background: conic-gradient(from 0deg at 50% 50%, rgba(255,72,56,.20) 0deg, rgba(255,72,56,.06) 34deg, transparent 62deg, transparent 360deg);
+    -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,.95), rgba(0,0,0,.5) 52%, transparent 74%);
+    mask-image: radial-gradient(closest-side, rgba(0,0,0,.95), rgba(0,0,0,.5) 52%, transparent 74%);
+    mix-blend-mode: screen; animation: pq-spin 7s linear infinite; }
+  @keyframes pq-spin { to { transform: rotate(360deg); } }
+  /* Scanline vertical sutil (además del radar) */
+  .pq-hero__scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; pointer-events: none; opacity: .55;
+    background: linear-gradient(90deg, transparent, rgba(255,72,56,.55), transparent); animation: pq-scan 6.5s linear infinite; }
+  @keyframes pq-scan { 0% { top: 6%; } 100% { top: 94%; } }
+  @media (prefers-reduced-motion: reduce) { .pq-hero__scan, .pq-hero__radar { animation: none; } .pq-hero__scan { display: none; } }
+  .pq-eyebrow { font-style: italic; font-weight: 600; font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .16em; color: var(--a1s-red-400); margin: 0 0 14px; display: inline-flex; align-items: center; gap: 10px; }
+  .pq-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--a1s-red); box-shadow: 0 0 10px var(--a1s-red-glow); }
+  .pq-hero h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.025em; line-height: 1.04;
+    font-size: clamp(2.1rem, 5.2vw, 3.6rem); max-width: 18ch; }
+  .pq-hero p.lead { margin: 18px 0 0; max-width: 60ch; color: var(--dark-muted); font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.65; }
+
+  /* ── Stepper ── */
+  .pq-steps { display: flex; gap: 10px; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+  .pq-steps .s { display: inline-flex; align-items: center; gap: 9px; font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.45); }
+  .pq-steps .s .n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem;
+    border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.6); }
+  .pq-steps .s.on { color: #fff; }
+  .pq-steps .s.on .n { background: var(--a1s-red); border-color: var(--a1s-red); color: #fff; box-shadow: 0 0 16px rgba(192,35,27,.6); }
+  .pq-steps .s.done .n { background: rgba(255,82,66,.18); border-color: var(--a1s-red-400); color: var(--a1s-red-400); }
+  .pq-steps .bar { width: 26px; height: 2px; background: rgba(255,255,255,.18); }
+
+  /* ── Body / cards ── */
+  .pq-body { padding: clamp(40px, 6vw, 72px) 0 clamp(60px, 9vw, 110px); min-height: 40vh; }
+  .pq-secthead h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.02em; }
+  .pq-secthead p { margin: 10px 0 0; color: var(--text-muted); font-size: 1rem; line-height: 1.6; max-width: 56ch; }
+
+  .pq-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2vw, 22px); margin-top: 38px; }
+  @media (max-width: 720px) { .pq-cards { grid-template-columns: 1fr; } }
+  .pq-card { text-align: left; cursor: pointer; background: var(--surface-card); border: 1px solid var(--border);
+    border-radius: 22px; padding: clamp(22px, 3vw, 30px); display: flex; gap: 20px; align-items: flex-start;
+    transition: transform .3s var(--ease-out), border-color .3s, box-shadow .3s; position: relative; overflow: hidden; font-family: inherit; }
+  .pq-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--a1s-red);
+    transform: scaleY(0); transform-origin: top; transition: transform .35s var(--ease-out); }
+  .pq-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--a1s-red) 40%, var(--border));
+    box-shadow: 0 30px 60px -28px rgba(192,35,27,.4); }
+  .pq-card:hover::before { transform: scaleY(1); }
+  .pq-card__ic { flex: none; width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center;
+    background: color-mix(in srgb, var(--a1s-red) 9%, transparent); color: var(--a1s-red); transition: background .3s, transform .3s; }
+  .pq-card:hover .pq-card__ic { background: var(--a1s-red); color: #fff; transform: scale(1.06); }
+  .pq-card h3 { font-size: 1.18rem; font-weight: 700; letter-spacing: -.01em; }
+  .pq-card p { margin: 6px 0 0; color: var(--text-muted); font-size: .92rem; line-height: 1.55; }
+  .pq-card .pq-card__go { margin-top: 14px; display: inline-flex; align-items: center; gap: 7px; color: var(--a1s-red);
+    font-weight: 700; font-size: .88rem; transition: gap .25s; }
+  .pq-card:hover .pq-card__go { gap: 12px; }
+  .pq-card.alt { background: linear-gradient(160deg, #15100F, #0A0A0C); border-color: var(--dark-line); color: #fff; }
+  .pq-card.alt h3 { color: #fff; } .pq-card.alt p { color: var(--dark-muted); }
+  .pq-card.alt .pq-card__ic { background: rgba(255,82,66,.16); color: var(--a1s-red-400); }
+  .pq-card.alt:hover .pq-card__ic { background: var(--a1s-red); color: #fff; }
+
+  /* ── Glosario PQRS (bajo las 4 cards) ── */
+  .pq-gloss { margin-top: clamp(36px, 5vw, 56px); padding-top: clamp(30px, 4vw, 44px); border-top: 1px solid var(--border); }
+  .pq-gloss__head h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.7rem); letter-spacing: -.02em; }
+  .pq-gloss__head p { margin: 9px 0 0; color: var(--text-muted); font-size: .95rem; line-height: 1.6; max-width: 60ch; }
+  .pq-gloss__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+  @media (max-width: 860px) { .pq-gloss__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .pq-gloss__grid { grid-template-columns: 1fr; } }
+  .pq-gloss__item { display: flex; gap: 14px; align-items: flex-start; padding: 18px 18px; background: var(--surface-card);
+    border: 1px solid var(--border); border-radius: 16px; transition: border-color .25s, transform .25s, box-shadow .25s; }
+  .pq-gloss__item:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--a1s-red) 32%, var(--border)); box-shadow: 0 18px 38px -22px rgba(192,35,27,.4); }
+  .pq-gloss__l { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: color-mix(in srgb, var(--a1s-red) 10%, transparent); color: var(--a1s-red);
+    font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; line-height: 1; }
+  .pq-gloss__item h4 { font-size: 1rem; font-weight: 700; letter-spacing: -.01em; }
+  .pq-gloss__item p { margin: 5px 0 0; color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
+  .pq-gloss__note { margin: 22px 0 0; color: var(--text-muted); font-size: .88rem; }
+  .pq-gloss__note b { color: var(--text); font-weight: 700; }
+
+  /* ── Form ── */
+  .pq-form-wrap { max-width: 760px; }
+  .pq-backbtn { background: none; border: none; cursor: pointer; font-family: inherit; font-weight: 600; font-size: .9rem;
+    color: var(--text-muted); display: inline-flex; align-items: center; gap: 8px; padding: 0; margin-bottom: 22px; transition: color .2s; }
+  .pq-backbtn:hover { color: var(--a1s-red); }
+  .pq-form-card { background: var(--surface-card); border: 1px solid var(--border); border-radius: 24px;
+    padding: clamp(24px, 4vw, 44px); box-shadow: 0 30px 70px -40px rgba(0,0,0,.3); }
+  .pq-tag { display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px; border-radius: 999px;
+    background: color-mix(in srgb, var(--a1s-red) 9%, transparent); color: var(--a1s-red); font-weight: 700; font-size: .82rem; }
+  .pq-form-card > h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    letter-spacing: -.02em; margin: 16px 0 6px; }
+  .pq-form-card > .sub { color: var(--text-muted); font-size: .95rem; line-height: 1.55; margin: 0 0 26px; }
+
+  .pq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .pq-grid .full { grid-column: 1 / -1; }
+  @media (max-width: 600px) { .pq-grid { grid-template-columns: 1fr; } .pq-grid .full { grid-column: auto; } }
+  .fld { display: flex; flex-direction: column; gap: 7px; }
+  .fld label { font-size: .85rem; font-weight: 600; color: var(--text); }
+  .fld label .req { color: var(--a1s-red); }
+  .fld input, .fld select, .fld textarea { font-family: inherit; font-size: .95rem; color: var(--text);
+    background: var(--bg); border: 1.5px solid var(--border-strong); border-radius: 12px; padding: 12px 14px; transition: border-color .2s, box-shadow .2s; width: 100%; }
+  .fld textarea { resize: vertical; min-height: 130px; line-height: 1.55; }
+  .fld input:focus, .fld select:focus, .fld textarea:focus { outline: none; border-color: var(--a1s-red);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--a1s-red) 14%, transparent); }
+  .fld .hint { font-size: .78rem; color: var(--text-muted); }
+  .fld .count { font-size: .78rem; color: var(--text-muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .fld .count.warn { color: var(--warning); } .fld .count.over { color: var(--error); font-weight: 700; }
+  .fld .two { display: grid; grid-template-columns: 130px 1fr; gap: 10px; }
+
+  /* ── Adjuntar archivos (soportes / evidencia) ── */
+  .pq-file { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; cursor: pointer;
+    padding: 26px 20px; border: 1.5px dashed var(--border-strong); border-radius: 14px; background: var(--bg);
+    transition: border-color .2s, background .2s; }
+  .pq-file:hover, .pq-file:focus-visible, .pq-file.drag { border-color: var(--a1s-red);
+    background: color-mix(in srgb, var(--a1s-red) 5%, var(--bg)); outline: none; }
+  .pq-file-ic { color: var(--a1s-red); display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px;
+    background: color-mix(in srgb, var(--a1s-red) 10%, transparent); margin-bottom: 4px; }
+  .pq-file-main { font-size: .92rem; color: var(--text); }
+  .pq-file-main b { color: var(--a1s-red); font-weight: 700; }
+  .pq-file-sub { font-size: .78rem; color: var(--text-muted); }
+  .pq-file-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .pq-file-list:empty { margin-top: 0; }
+  .pq-file-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border); }
+  .pq-file-itemic { flex: none; color: var(--a1s-red); display: grid; place-items: center; }
+  .pq-file-name { flex: 1 1 auto; min-width: 0; font-size: .88rem; font-weight: 600; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pq-file-size { flex: none; font-size: .78rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .pq-file-x { flex: none; background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 4px;
+    display: grid; place-items: center; border-radius: 8px; transition: color .2s, background .2s; }
+  .pq-file-x:hover { color: var(--error); background: color-mix(in srgb, var(--error) 12%, transparent); }
+
+  /* segmented (tipo de solicitud / admin-operativo) */
+  .seg { display: flex; flex-wrap: wrap; gap: 9px; }
+  .seg button { font-family: inherit; cursor: pointer; font-size: .85rem; font-weight: 600; padding: 11px 16px;
+    border-radius: 999px; border: 1.5px solid var(--border-strong); background: var(--bg); color: var(--text-muted); transition: all .2s; }
+  .seg button:hover { border-color: var(--a1s-red-400); color: var(--text); }
+  .seg button.on { background: var(--a1s-red); border-color: var(--a1s-red); color: #fff; box-shadow: 0 10px 24px -10px rgba(192,35,27,.6); }
+
+  .pq-divider { height: 1px; background: var(--border); margin: 28px 0; }
+  .pq-cond { display: none; }
+  .pq-cond.open { display: block; animation: pqReveal .34s var(--ease-standard, ease) both; }
+  .pq-cond-inner { padding-top: 6px; }
+  @keyframes pqReveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+  .pq-actions { display: flex; gap: 14px; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+  .btn { font-family: inherit; font-weight: 700; font-size: .95rem; border-radius: 999px; padding: 14px 30px;
+    cursor: pointer; border: 1.5px solid transparent; transition: transform .2s, background .25s, border-color .25s, box-shadow .25s; }
+  .btn:active { transform: scale(.98); }
+  .btn--primary { background: var(--a1s-red); color: #fff; box-shadow: 0 18px 40px -14px rgba(192,35,27,.6); }
+  .btn--primary:hover { background: var(--a1s-red-600); transform: translateY(-2px); }
+  .btn--ghost { background: transparent; color: var(--text); border-color: var(--border-strong); }
+  .btn--ghost:hover { border-color: var(--a1s-red); color: var(--a1s-red); }
+  .pq-err { color: var(--error); font-size: .85rem; font-weight: 600; }
+  .checkrow { display: flex; gap: 11px; align-items: flex-start; margin-top: 22px; font-size: .85rem; color: var(--text-muted); line-height: 1.5; }
+  .checkrow input { margin-top: 2px; width: 18px; height: 18px; accent-color: var(--a1s-red); flex: none; }
+  .checkrow a { color: var(--a1s-red); text-decoration: underline; }
+
+  /* ── Verificación de correo ── */
+  .pq-verify { text-align: center; max-width: 520px; margin-inline: auto; }
+  .pq-verify .mail-ic { width: 84px; height: 84px; border-radius: 24px; display: grid; place-items: center; margin: 0 auto 22px;
+    background: radial-gradient(60% 60% at 50% 30%, rgba(255,82,66,.2), transparent 70%), color-mix(in srgb, var(--a1s-red) 7%, var(--surface));
+    border: 1.5px solid color-mix(in srgb, var(--a1s-red) 35%, transparent); color: var(--a1s-red); position: relative; }
+  .pq-verify .mail-ic::after { content: ''; position: absolute; inset: -8px; border-radius: 28px; border: 1px solid color-mix(in srgb, var(--a1s-red) 30%, transparent); opacity: .6; animation: pq-ping 2.4s ease-out infinite; }
+  @keyframes pq-ping { 0% { transform: scale(.85); opacity: .6; } 100% { transform: scale(1.2); opacity: 0; } }
+  .pq-verify h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 1.9rem); letter-spacing: -.02em; }
+  .pq-verify p { color: var(--text-muted); line-height: 1.6; margin: 10px 0 0; }
+  .pq-verify .mailaddr { color: var(--text); font-weight: 700; }
+  .otp { display: flex; gap: 10px; justify-content: center; margin: 30px 0 8px; }
+  .otp input { width: 52px; height: 62px; text-align: center; font-size: 1.6rem; font-weight: 700; font-family: var(--font-display);
+    border: 1.5px solid var(--border-strong); border-radius: 14px; background: var(--bg); color: var(--text); transition: border-color .2s, box-shadow .2s; }
+  @media (max-width: 460px) { .otp input { width: 42px; height: 52px; font-size: 1.3rem; } }
+  .otp input:focus { outline: none; border-color: var(--a1s-red); box-shadow: 0 0 0 4px color-mix(in srgb, var(--a1s-red) 14%, transparent); }
+  .otp input.filled { border-color: var(--a1s-red); }
+  .pq-resend { font-size: .88rem; color: var(--text-muted); margin-top: 6px; }
+  .pq-resend button { background: none; border: none; color: var(--a1s-red); font-weight: 700; cursor: pointer; font-family: inherit; font-size: .88rem; }
+  .pq-resend button:disabled { color: var(--text-muted); cursor: default; }
+
+  /* ── Éxito ── */
+  .pq-done { text-align: center; max-width: 560px; margin-inline: auto; }
+  .pq-done .ok { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 24px;
+    background: radial-gradient(60% 60% at 50% 35%, rgba(30,158,90,.28), transparent 70%), #0A0A0C; color: #36D27E;
+    border: 1.5px solid rgba(54,210,126,.5); box-shadow: 0 0 36px rgba(30,158,90,.35); animation: pq-pop .5s var(--ease-out) both; }
+  @keyframes pq-pop { from { transform: scale(.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .pq-done h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.02em; }
+  .pq-done p { color: var(--text-muted); line-height: 1.6; margin: 12px 0 0; }
+  .pq-radicado { margin: 26px auto 0; display: inline-flex; flex-direction: column; gap: 4px; padding: 18px 34px;
+    border-radius: 16px; background: var(--surface); border: 1px dashed var(--border-strong); }
+  .pq-radicado .lbl { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+  .pq-radicado .num { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: .02em; color: var(--a1s-red); }
+
+  /* ── Estado timeline ── */
+  .pq-track { margin-top: 30px; }
+  .pq-track .row { display: flex; gap: 18px; }
+  .pq-track .dotcol { display: flex; flex-direction: column; align-items: center; }
+  .pq-track .dot { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    background: var(--surface); border: 2px solid var(--border-strong); color: var(--text-muted); }
+  .pq-track .row.done .dot { background: var(--a1s-red); border-color: var(--a1s-red); color: #fff; }
+  .pq-track .row.cur .dot { border-color: var(--a1s-red); color: var(--a1s-red); box-shadow: 0 0 0 4px color-mix(in srgb, var(--a1s-red) 16%, transparent); }
+  .pq-track .line { width: 2px; flex: 1; background: var(--border); min-height: 26px; }
+  .pq-track .row.done .line { background: var(--a1s-red); }
+  .pq-track .txt { padding-bottom: 26px; }
+  .pq-track .txt h4 { font-size: 1rem; font-weight: 700; }
+  .pq-track .txt p { margin: 3px 0 0; color: var(--text-muted); font-size: .88rem; }
+  .pq-track .txt .when { font-size: .78rem; color: var(--text-muted); margin-top: 2px; }
+
+  .pq-foot { background: var(--dark-bg); color: var(--dark-muted); padding: 26px 0; border-top: 1px solid var(--dark-line); font-size: .82rem; }
+  .pq-foot .in { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .pq-foot-legal { display: inline-flex; gap: 16px; flex-wrap: wrap; }
+  .pq-foot a { color: var(--a1s-red-400); text-decoration: none; font-weight: 600; }
+  .pq-foot a:hover { color: #fff; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0A0A0C"/>
+    <rect x="26" y="22" width="48" height="40" rx="5" fill="none" stroke="#C0231B" stroke-width="3"/>
+    <path d="M26 30 50 46 74 30" fill="none" stroke="#C0231B" stroke-width="3"/>
+    <text x="50" y="84" fill="#fff" font-family="sans-serif" font-weight="700" font-size="15" text-anchor="middle">PQRS</text>
+  </svg>
+</template>
+
+<header class="pq-head">
+  <div class="wrap pq-head__in">
+    <a href="index.html" class="pq-logo" aria-label="A1S Security Group — Inicio">
+      <img src="assets/logo-a1s-lockup-blanco.svg?v=2" alt="A1S Security Group">
+    </a>
+    <a class="pq-back" href="index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6 5 12l6 6"/></svg>
+      Volver al sitio
+    </a>
+  </div>
+</header>
+
+<section class="pq-hero">
+  <div class="pq-hero__grid"></div>
+  <div class="pq-hero__radar"></div>
+  <div class="pq-hero__scan"></div>
+  <div class="wrap" style="position:relative">
+    <p class="pq-eyebrow">Atención al ciudadano · PQRS</p>
+    <h1>Tu voz nos hace <span style="color:var(--a1s-red-400)">más fuertes</span>.</h1>
+    <p class="lead">Radica tu Petición, Queja, Reclamo, Sugerencia, Felicitación o Denuncia. Selecciona tu perfil para guiarte con el formulario correcto — respondemos dentro de los términos de ley.</p>
+    <div class="pq-steps" id="stepper">
+      <span class="s on" data-step="1"><span class="n">1</span> Selección</span>
+      <span class="bar"></span>
+      <span class="s" data-step="2"><span class="n">2</span> Datos de tu solicitud</span>
+      <span class="bar"></span>
+      <span class="s" data-step="3"><span class="n">3</span> Verificación</span>
+      <span class="bar"></span>
+      <span class="s" data-step="4"><span class="n">4</span> Radicado</span>
+    </div>
+  </div>
+</section>
+
+<main class="pq-body">
+  <div class="wrap" id="app"></div>
+</main>
+
+<footer class="pq-foot">
+  <div class="wrap in">
+    <span>© <span id="yr"></span> A1S Security Group · Vigilado Supervigilancia</span>
+    <nav class="pq-foot-legal">
+      <a href="legal.html">Legal</a>
+      <a href="legal.html#tratamiento-datos">Política de datos</a>
+      <a href="index.html">Volver al sitio</a>
+    </nav>
+    <span style="margin-left:auto">Radica tu solicitud únicamente a través de este formulario.</span>
+  </div>
+</footer>
+
+<script src="js/cookies.js?v=1"></script>
+<script src="js/pqrs-routing.js?v=1"></script>
+<script src="js/pqrs.js?v=5"></script>
+</body>
+</html>

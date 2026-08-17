@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legal · Políticas corporativas — A1S Security Group</title>
+<meta name="description" content="Políticas corporativas de A1S Security Group: SARLAFT, seguridad vial, prevención de acoso, equidad de género, tratamiento de datos y más.">
+<link rel="stylesheet" href="styles/styles.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: inherit; }
+  ::selection { background: var(--a1s-red); color: #fff; }
+  h1, h2, h3, h4 { margin: 0; }
+  .wrap { width: min(1180px, 100% - 2 * clamp(20px, 5vw, 64px)); margin-inline: auto; }
+
+  /* Header */
+  .lg-head { position: sticky; top: 0; z-index: 40; background: rgba(10,10,12,.82);
+    backdrop-filter: saturate(150%) blur(14px); border-bottom: 1px solid var(--dark-line); }
+  .lg-head__in { display: flex; align-items: center; gap: 18px; height: 76px; }
+  .lg-head .lg-logo { display: flex; align-items: center; }
+  .lg-head .lg-logo img { height: 50px; width: auto; display: block; }
+  @media (max-width: 620px) { .lg-head .lg-logo img { height: 40px; } }
+  .lg-head .lg-back { margin-left: auto; color: var(--dark-muted); font-size: .9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color .2s; }
+  .lg-head .lg-back:hover { color: #fff; }
+
+  /* Hero */
+  .lg-hero { position: relative; overflow: hidden; background:
+    radial-gradient(60% 80% at 82% 8%, rgba(192,35,27,.22), transparent 58%), #0A0A0C; color: #fff;
+    padding: clamp(48px, 8vw, 84px) 0 clamp(40px, 6vw, 60px); }
+  .lg-hero__grid { position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 54px),
+                repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 54px); }
+  .lg-eyebrow { font-style: italic; font-weight: 600; font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .16em; color: var(--a1s-red-400); margin: 0 0 14px; display: inline-flex; align-items: center; gap: 10px; }
+  .lg-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--a1s-red); box-shadow: 0 0 10px var(--a1s-red-glow); }
+  .lg-hero h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.025em; line-height: 1.04;
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem); max-width: 20ch; }
+  .lg-hero p.lead { margin: 18px 0 0; max-width: 62ch; color: var(--dark-muted); font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.65; }
+
+  /* Cuerpo */
+  .lg-body { padding: clamp(40px, 6vw, 68px) 0 clamp(60px, 9vw, 104px); }
+  .lg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 2vw, 22px); }
+  @media (max-width: 720px) { .lg-grid { grid-template-columns: 1fr; } }
+  .lg-card { scroll-margin-top: 96px; background: var(--surface-card); border: 1px solid var(--border);
+    border-radius: 22px; padding: clamp(22px, 3vw, 30px); position: relative; overflow: hidden;
+    transition: transform .3s var(--ease-out), border-color .3s, box-shadow .3s; }
+  .lg-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--a1s-red);
+    transform: scaleY(0); transform-origin: top; transition: transform .35s var(--ease-out); }
+  .lg-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--a1s-red) 40%, var(--border));
+    box-shadow: 0 30px 60px -30px rgba(192,35,27,.4); }
+  .lg-card:hover::before { transform: scaleY(1); }
+  .lg-card:target { border-color: var(--a1s-red); box-shadow: 0 0 0 4px color-mix(in srgb, var(--a1s-red) 14%, transparent); }
+  .lg-card:target::before { transform: scaleY(1); }
+  .lg-card__top { display: flex; gap: 16px; align-items: flex-start; }
+  .lg-card__ic { flex: none; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+    background: color-mix(in srgb, var(--a1s-red) 9%, transparent); color: var(--a1s-red); }
+  .lg-card h2 { font-family: var(--font-display); font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
+  .lg-card .lg-tag { display: inline-block; margin-top: 4px; font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--text-muted); }
+  .lg-card p { margin: 16px 0 0; color: var(--text-muted); font-size: .95rem; line-height: 1.6; }
+  .lg-card__cta { margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; color: var(--a1s-red);
+    font-weight: 700; font-size: .88rem; text-decoration: none; transition: gap .25s; }
+  .lg-card__cta:hover { gap: 12px; }
+
+  .lg-note { margin-top: clamp(30px, 4vw, 44px); padding: clamp(20px, 3vw, 28px); border-radius: 18px;
+    background: var(--surface); border: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start; }
+  .lg-note svg { flex: none; color: var(--a1s-red); margin-top: 2px; }
+  .lg-note p { margin: 0; color: var(--text-muted); font-size: .92rem; line-height: 1.6; }
+  .lg-note b { color: var(--text); }
+
+  .lg-foot { background: var(--dark-bg); color: var(--dark-muted); padding: 26px 0; border-top: 1px solid var(--dark-line); font-size: .82rem; }
+  .lg-foot .in { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .lg-foot a { color: var(--a1s-red-400); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0A0A0C"/>
+    <path d="M50 20 30 28v18c0 13 9 22 20 26 11-4 20-13 20-26V28L50 20Z" fill="none" stroke="#C0231B" stroke-width="4"/>
+    <path d="M42 48l6 6 12-12" fill="none" stroke="#C0231B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="50" y="86" fill="#fff" font-family="sans-serif" font-weight="700" font-size="13" text-anchor="middle">LEGAL</text>
+  </svg>
+</template>
+
+<header class="lg-head">
+  <div class="wrap lg-head__in">
+    <a href="index.html" class="lg-logo" aria-label="A1S Security Group — Inicio">
+      <img src="assets/logo-a1s-lockup-blanco.svg?v=2" alt="A1S Security Group">
+    </a>
+    <a class="lg-back" href="index.html">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6 5 12l6 6"/></svg>
+      Volver al sitio
+    </a>
+  </div>
+</header>
+
+<section class="lg-hero">
+  <div class="lg-hero__grid"></div>
+  <div class="wrap" style="position:relative">
+    <p class="lg-eyebrow">Legal · Cumplimiento</p>
+    <h1>Nuestras <span style="color:var(--a1s-red-400)">políticas</span> corporativas.</h1>
+    <p class="lead">A1S Security Group opera bajo un marco de cumplimiento riguroso. Estas son las políticas que rigen nuestra operación, nuestro talento y la relación con clientes, proveedores y comunidades.</p>
+  </div>
+</section>
+
+<main class="lg-body">
+  <div class="wrap">
+    <div class="lg-grid" id="grid"></div>
+    <div class="lg-note">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><path d="M9 13h6M9 17h6"/></svg>
+      <p>¿Necesitas una copia oficial de alguna política? Puedes <b>solicitar el documento</b> a través de nuestro canal de <a href="PQRS.html" style="color:var(--a1s-red);text-decoration:underline;font-weight:600">PQRS</a>. Todas nuestras políticas se revisan y actualizan periódicamente conforme a la normatividad vigente en Colombia.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="lg-foot">
+  <div class="wrap in">
+    <span>© <span id="yr"></span> A1S Security Group · Vigilado Supervigilancia</span>
+    <span style="margin-left:auto"><a href="index.html">Inicio</a> · <a href="PQRS.html">PQRS</a></span>
+  </div>
+</footer>
+
+<script src="js/cookies.js?v=1"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var POLICIES = [
+    // [id, título, tag, descripción, archivo (null = pendiente de enlazar al documento oficial)]
+    ['sarlaft', 'Política SARLAFT', 'Riesgo LA/FT', 'Sistema de Administración del Riesgo de Lavado de Activos y Financiación del Terrorismo (SARLAFT): prevención, detección y control de operaciones inusuales o sospechosas en toda la organización.', null],
+    ['alcohol-drogas', 'Política de Alcohol, Tabaco y Drogas', 'Entornos seguros', 'Prevención del consumo de alcohol, tabaco y sustancias psicoactivas, para garantizar entornos de trabajo seguros, saludables y libres de riesgos.', null],
+    ['seguridad-vial', 'Política de Seguridad Vial', 'PESV', 'Lineamientos del Plan Estratégico de Seguridad Vial (PESV) para prevenir accidentes de tránsito y proteger a conductores, colaboradores y terceros en la vía.', null],
+    ['integral', 'Política Integral', 'Calidad · SST · Ambiente', 'Compromiso integrado de calidad del servicio, seguridad y salud en el trabajo (SG-SST), gestión ambiental y seguridad de la información.', null],
+    ['acoso', 'Política de Prevención de Acoso Laboral y Sexual', 'Convivencia', 'Prevención, atención y sanción del acoso laboral y sexual, con canales confidenciales de reporte y protección efectiva a quien denuncia.', null],
+    ['equidad-genero', 'Política de Equidad de Género e Inclusión', 'Diversidad', 'Igualdad de oportunidades, diversidad e inclusión, sin discriminación por género, origen, creencia o condición alguna.', null],
+    ['tratamiento-datos', 'Política de Tratamiento de Datos Personales', 'Ley 1581 de 2012', 'Tratamiento, protección y uso responsable de los datos personales conforme a la Ley 1581 de 2012 y sus decretos reglamentarios.', null],
+    ['reglamento-interno', 'Reglamento Interno de Trabajo', 'Talento humano', 'Normas que regulan la relación laboral en A1S: jornada y horarios, descansos y permisos, deberes y derechos de las partes, régimen disciplinario y mecanismos para presentar reclamos. Versión 2026.', 'docs/Reglamento Interno de Trabajo A1S 2026.pdf']
+  ];
+  var shield = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg>';
+  var arrow = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+  var download = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>';
+  document.getElementById('grid').innerHTML = POLICIES.map(function (p) {
+    var file = p[4]; // TODO: enlazar aquí los documentos oficiales restantes
+    return '<article class="lg-card" id="' + p[0] + '">' +
+      '<div class="lg-card__top"><span class="lg-card__ic">' + shield + '</span>' +
+      '<div><h2>' + p[1] + '</h2><span class="lg-tag">' + p[2] + '</span></div></div>' +
+      '<p>' + p[3] + '</p>' +
+      (file
+        ? '<a class="lg-card__cta" href="' + encodeURI(file) + '" download>Descargar documento ' + download + '</a>'
+        : '<a class="lg-card__cta" href="#' + p[0] + '" title="Documento en proceso de publicación">Descargar documento ' + download + '</a>') +
+      '</article>';
+  }).join('');
+</script>
+</body>
+</html>

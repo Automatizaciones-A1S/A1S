@@ -1,0 +1,34 @@
+/* A1S Security Group — Base / reset
+   Sensible defaults applied when consumers add the `a1s` class to <body> or a root. */
+
+.a1s, .a1s * { box-sizing: border-box; }
+
+.a1s {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.a1s h1, .a1s h2, .a1s h3, .a1s h4 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  letter-spacing: var(--ls-tight);
+  text-wrap: balance;
+}
+.a1s p { margin: 0; text-wrap: pretty; }
+.a1s a { color: inherit; text-decoration: none; }
+
+.a1s ::selection { background: var(--a1s-red); color: #fff; }
+
+/* Focus ring accesible (teclado) */
+.a1s :focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}

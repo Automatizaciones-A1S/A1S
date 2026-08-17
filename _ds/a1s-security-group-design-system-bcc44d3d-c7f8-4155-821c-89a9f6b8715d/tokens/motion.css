@@ -1,0 +1,45 @@
+/* A1S Security Group — Motion tokens
+   El movimiento sirve a la narrativa y a la confianza, nunca distrae.
+   Fades + translate sutiles, micro-escala en hover, glow rojo en activos.
+   Siempre respetar prefers-reduced-motion. */
+
+:root {
+  /* Duración */
+  --dur-fast: 120ms;   /* @kind other */
+  --dur-base: 220ms;   /* @kind other */
+  --dur-slow: 420ms;   /* @kind other */
+  --dur-reveal: 700ms; /* @kind other */
+
+  /* Easing */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);   /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);   /* @kind other */
+  --ease-magnetic: cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+
+  /* Transforms de interacción */
+  --hover-lift: -4px; /* @kind other */
+  --hover-scale: 1.02; /* @kind other */
+  --press-scale: 0.97; /* @kind other */
+  --tilt-max: 6deg; /* @kind other */
+  --parallax-clamp: 12px; /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-reveal: 0ms;
+    --hover-lift: 0px;
+    --hover-scale: 1;
+    --press-scale: 1;
+    --tilt-max: 0deg;
+    --parallax-clamp: 0px;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

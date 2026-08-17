@@ -1,0 +1,76 @@
+/* A1S Security Group — Color tokens
+   Estética híbrida: base clara institucional + secciones oscuras inmersivas ("Centro de Control").
+   El rojo PUNTÚA (acento de acción), no INUNDA. */
+
+:root {
+  /* ── Marca ───────────────────────────────────────────────── */
+  --a1s-red: #C0231B;        /* primario / acento — CTAs, datos clave, highlights */
+  --a1s-red-600: #A91D16;    /* hover (más oscuro) */
+  --a1s-red-700: #8E160F;    /* pressed / tabs activos */
+  --a1s-red-400: #D6453D;    /* highlight / borde claro */
+  --a1s-red-glow: #FF3B30;   /* glow en oscuro — usar con opacidad baja */
+
+  /* ── Neutros base ────────────────────────────────────────── */
+  --a1s-black: #000000;
+  --a1s-ink: #1D1D1B;        /* negro de marca (logo) — texto principal */
+  --a1s-graphite: #5B5B5F;   /* gris secundario — texto de apoyo */
+  --a1s-white: #FFFFFF;
+
+  /* ── Escala de grises ────────────────────────────────────── */
+  --gray-50:  #F7F7F8;
+  --gray-100: #ECECEE;
+  --gray-200: #D9D9DC;
+  --gray-300: #B9B9BE;
+  --gray-400: #8A8A90;
+  --gray-500: #5B5B5F;
+  --gray-700: #34343A;
+  --gray-900: #141417;
+
+  /* ── Modo oscuro / Centro de Control ─────────────────────── */
+  --dark-bg:      #0A0A0C;   /* casi-negro base */
+  --dark-surface: #121217;   /* superficies / cards */
+  --dark-elevated:#181820;   /* cards elevadas / hover */
+  --dark-line:    #26262E;   /* bordes sutiles */
+  --dark-text:    #EDEDF0;
+  --dark-muted:   #9A9AA3;
+
+  /* ── Estado ──────────────────────────────────────────────── */
+  --success: #1E9E5A;
+  --warning: #E0A106;
+  --error:   #C0231B;
+  --info:    #2A6FDB;
+
+  /* ── Semánticos · CLARO (default) ────────────────────────── */
+  --bg:           var(--a1s-white);
+  --surface:      var(--gray-50);
+  --surface-card: var(--a1s-white);
+  --text:         var(--a1s-ink);
+  --text-muted:   var(--a1s-graphite);
+  --text-on-accent: var(--a1s-white);
+  --border:       var(--gray-200);
+  --border-strong:var(--gray-300);
+  --accent:       var(--a1s-red);
+  --accent-hover: var(--a1s-red-600);
+  --eyebrow:      var(--a1s-red);
+
+  /* ── Semánticos · OSCURO ("Centro de Control") ───────────── */
+  --d-bg:         var(--dark-bg);
+  --d-surface:    var(--dark-surface);
+  --d-text:       var(--dark-text);
+  --d-muted:      var(--dark-muted);
+  --d-border:     var(--dark-line);
+}
+
+/* Scope oscuro reutilizable: aplica el "Centro de Control" a cualquier bloque.
+   Uso: <section class="a1s-dark"> … </section> */
+.a1s-dark {
+  --bg:           var(--dark-bg);
+  --surface:      var(--dark-surface);
+  --surface-card: var(--dark-surface);
+  --text:         var(--dark-text);
+  --text-muted:   var(--dark-muted);
+  --border:       var(--dark-line);
+  --border-strong:#33333D;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A1S — Shot List de Imágenes 4K</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap');
+  :root { --red: #C0231B; --ink: #1D1D1B; --muted: #5B5B5F; --line: #E5E5E8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--ink); background: #fff; line-height: 1.55; }
+  .page { max-width: 880px; margin: 0 auto; padding: 56px 32px 90px; }
+  header.doc { border-bottom: 3px solid var(--red); padding-bottom: 22px; margin-bottom: 10px; }
+  header.doc h1 { margin: 10px 0 6px; font-size: 2rem; font-weight: 800; letter-spacing: -.02em; text-transform: uppercase; }
+  .eyebrow { color: var(--red); font-style: italic; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .18em; margin: 0; }
+  .lead { color: var(--muted); font-size: .95rem; max-width: 64ch; }
+  h2 { font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; margin: 44px 0 6px; }
+  h2 span { color: var(--red); }
+  .rule { color: var(--muted); font-size: .875rem; }
+  .shot { border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-top: 18px; page-break-inside: avoid; }
+  .shot h3 { margin: 0; font-size: 1rem; font-weight: 700; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .tag { font-size: .68rem; font-weight: 700; letter-spacing: .06em; padding: 3px 10px; border-radius: 999px; background: #FBEAE9; color: var(--red); text-transform: uppercase; }
+  .tag.dark { background: var(--ink); color: #fff; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 2px; font-size: .8rem; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .shot p.desc { margin: 10px 0 0; font-size: .9rem; }
+  pre { background: #F7F7F8; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: .78rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, 'SF Mono', Menlo, monospace; margin: 12px 0 0; }
+  .note { background: #FBEAE9; border-radius: 12px; padding: 16px 20px; font-size: .875rem; margin-top: 16px; }
+  .note b { color: var(--red); }
+  ol li { margin-bottom: 6px; font-size: .9rem; }
+  @media print { .page { padding: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="doc">
+    <p class="eyebrow">A1S Security Group · Producción de imágenes</p>
+    <h1>Shot List — Imágenes 4K</h1>
+    <p class="lead">11 imágenes para completar el home. Cada una tiene una <b>drop-zone</b> en la página: genera la imagen, arrástrala y suéltala sobre su zona (aparece al pasar el cursor). La página la guarda automáticamente y reemplaza el respaldo actual.</p>
+  </header>
+
+  <div class="note"><b>Regla de coherencia:</b> agrega el "bloque de estilo global" al final de <u>cada</u> prompt y usa el mismo seed/estilo en todas. Uniformes: "modern black tactical security uniform with subtle red accents, no readable text or logos" — el parche A1S se agrega en post. No generes logos reales con IA.</div>
+
+  <h2><span>0 ·</span> Bloque de estilo global (copiar en cada prompt)</h2>
+  <pre>STYLE: cinematic editorial photography, high-end commercial, hyper-detailed, sharp focus, professional color grading, deep shadows with subtle red (#C0231B) accent lighting and red rim light, moody and trustworthy, shot on full-frame DSLR, 85mm lens, shallow depth of field, realistic skin and textures, 8k, photorealistic --style raw
+
+NEGATIVE: text, watermark, logo, brand names, distorted faces, extra fingers, low quality, blurry, cartoon, oversaturated, plastic skin, weapons pointed at camera, gore</pre>
+
+  <h2><span>1 ·</span> Hero — capas separadas <span style="font-weight:400">(las 2 más importantes)</span></h2>
+  <p class="rule">Para que el guarda tenga su movimiento sutil y el carro quede 100% quieto, necesito <b>2 PNG separados con fondo transparente</b>. Genera la escena una sola vez y recorta cada elemento (o genera cada uno por separado con la misma luz).</p>
+
+  <div class="shot">
+    <h3>hero-guarda <span class="tag dark">PNG transparente</span> <span class="tag">se anima</span></h3>
+    <div class="meta"><span><b>Encuadre:</b> cuerpo completo, de pie, frontal-3/4</span><span><b>Alto mínimo:</b> 3000 px</span><span><b>Zona:</b> Hero, capa frontal</span></div>
+    <p class="desc">Escolta ejecutivo fotogénico (rostro definido, presencia segura), traje oscuro impecable, auricular y radio en mano. Luz dramática lateral con rim light rojo sutil para que recorte contra el fondo rojo. Recorte limpio en los bordes (pelo incluido).</p>
+    <pre>Full-body portrait of a confident, photogenic Latin American executive protection agent standing, dark tailored suit, earpiece, holding a two-way radio at chest height, subtle weight on one leg, dramatic studio lighting with a red rim light from behind, isolated on plain background for clean cutout. [+ STYLE GLOBAL]</pre>
+  </div>
+
+  <div class="shot">
+    <h3>hero-carro <span class="tag dark">PNG transparente</span> <span class="tag">quieto</span></h3>
+    <div class="meta"><span><b>Encuadre:</b> 3/4 frontal, completo</span><span><b>Ancho mínimo:</b> 3500 px</span><span><b>Zona:</b> Hero, capa trasera</span></div>
+    <p class="desc">Patrulla A1S blanca (sedán tipo patrulla con barra de luces), misma perspectiva y luz que el guarda. El branding A1S del costado se agrega en post si la IA no lo logra limpio.</p>
+    <pre>White security patrol sedan with light bar, three-quarter front view, studio automotive photography, dramatic lighting with subtle red rim light, pristine paint, isolated on plain background for clean cutout, no readable logos. [+ STYLE GLOBAL]</pre>
+  </div>
+
+  <h2><span>2 ·</span> Quiénes somos</h2>
+  <div class="shot">
+    <h3>about-equipo <span class="tag">3:4 · ≥1600×2133</span></h3>
+    <p class="desc">Centro de control A1S: operador de espaldas o perfil frente a muro de monitores CCTV, glow rojo, profundidad. Reemplaza la ilustración line-art.</p>
+    <pre>A high-tech security operations control room at night, an operator seen from behind facing a wall of glowing CCTV monitors and maps, volumetric haze, deep blacks with red accent glow, sense of vigilance and control, vertical composition. [+ STYLE GLOBAL]</pre>
+  </div>
+
+  <h2><span>3 ·</span> Servicios (6 medias, una por pestaña · 4:3 · ≥2048×1536)</h2>
+  <p class="rule">Sujeto claro en primer plano + fondo con profundidad (bokeh). Mismo grading en las 6.</p>
+
+  <div class="shot">
+    <h3>svc-fisica <span class="tag">4:3</span></h3>
+    <p class="desc">Vigilante + canino K9 (hoy usa la foto del manejador canino como respaldo — puedes dejarla o subir una mejor).</p>
+    <pre>A Latin American K9 security handler standing with an alert Belgian Malinois, black tactical uniform with subtle red accents, night urban perimeter with bokeh lights, dramatic side light with red rim. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>svc-electronica <span class="tag">4:3</span></h3>
+    <p class="desc">Operador CCTV frente a muro de pantallas (hoy usa la foto de monitoreo como respaldo).</p>
+    <pre>A security technician monitoring a large wall of high-definition CCTV screens in a dark SOC room, red and blue screen glow on face, hands on console, focused, depth and bokeh. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>svc-movil <span class="tag">4:3</span> <span class="tag dark">sin respaldo — prioritaria</span></h3>
+    <p class="desc">Flota / rastreo GPS.</p>
+    <pre>A fleet logistics operator viewing a real-time GPS tracking map on large screens, cargo trucks visible through a window at a logistics yard at dusk, red accent UI glow, cinematic. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>svc-drones <span class="tag">4:3</span> <span class="tag dark">sin respaldo — prioritaria</span></h3>
+    <p class="desc">Piloto de dron sobre instalación industrial.</p>
+    <pre>A drone pilot in black uniform with subtle red accents operating a professional quadcopter hovering at golden hour over an industrial facility, the drone sharply detailed, shallow depth of field. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>svc-ciber <span class="tag">4:3</span> <span class="tag dark">sin respaldo — prioritaria</span></h3>
+    <p class="desc">Analista SOC iluminado por dashboards.</p>
+    <pre>A focused cybersecurity analyst in a dark security operations center, face lit by code and data dashboards on multiple monitors, red and cyan accents, serious and intelligent mood. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>svc-riesgo <span class="tag">4:3</span> <span class="tag dark">sin respaldo — prioritaria</span></h3>
+    <p class="desc">Comité de seguridad: supervisor señalando KPIs y mapa del sitio.</p>
+    <pre>A security operations briefing: a supervisor pointing at a screen with KPIs and a site map while uniformed team members listen in a modern dark meeting room, professional, depth of field, red accent lighting. [+ STYLE GLOBAL]</pre>
+  </div>
+
+  <h2><span>4 ·</span> Portales de cierre (3:4 · ≥1600×2133)</h2>
+  <div class="shot">
+    <h3>portal-cliente <span class="tag">3:4 · PNG transparente ideal</span> <span class="tag dark">sin respaldo — prioritaria</span></h3>
+    <p class="desc">Escolta abriendo la puerta de una SUV blindada negra — acción, no pose. Si es PNG recortado, integra mejor con el fondo rojo del portal.</p>
+    <pre>A professional close-protection bodyguard in a dark suit opening the rear door of a black armored SUV while scanning the street, dynamic but discreet, red rim light, isolated on plain background for cutout. [+ STYLE GLOBAL]</pre>
+  </div>
+  <div class="shot">
+    <h3>portal-talento <span class="tag">3:4 · PNG transparente ideal</span></h3>
+    <p class="desc">Retrato orgulloso y cercano de colaborador(a) A1S (hoy usa la foto de la supervisora como respaldo). Sonrisa leve, humano y aspiracional.</p>
+    <pre>Authentic proud portrait of a Latin American security professional, slight warm smile, clean black uniform with subtle red accents, soft red gradient studio background, genuine and approachable, isolated for cutout. [+ STYLE GLOBAL]</pre>
+  </div>
+
+  <h2><span>5 ·</span> Cómo subirlas</h2>
+  <ol>
+    <li>Abre el home y pasa el cursor sobre la zona correspondiente — verás el contorno punteado con su etiqueta.</li>
+    <li>Arrastra el archivo (PNG/JPG/WebP) y suéltalo. Doble clic sobre la imagen colocada para reencuadrarla.</li>
+    <li>El hero activa la animación del guarda automáticamente al detectar la capa <b>hero-guarda</b>; el carro queda quieto.</li>
+  </ol>
+</div>
+</body>
+</html>

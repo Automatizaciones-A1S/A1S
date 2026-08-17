@@ -1,0 +1,54 @@
+/* A1S Security Group — Spacing, layout, radii, shadows
+   Base de 8px (4px para ajustes finos). Ritmo vertical generoso entre secciones. */
+
+:root {
+  /* ── Escala de espaciado (base 8) ────────────────────────── */
+  --space-unit: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Ritmo vertical de sección (fluido) */
+  --section-y: clamp(4rem, 10vw, 9rem); /* @kind spacing */
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --container-max: 1280px;
+  --container-wide: 1440px;
+  --container-narrow: 760px;   /* prosa / formularios */
+  --gutter: clamp(1rem, 4vw, 4rem); /* @kind spacing */
+
+  /* Breakpoints (referencia): sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536 */
+
+  /* ── Radios ──────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;     /* cards / imágenes (esquinas suaves) */
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+
+  /* ── Sombras ─────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.10);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,.16);
+  --shadow-glow: 0 0 40px rgba(192,35,27,.25);   /* glow rojo en oscuro */
+  --shadow-glow-strong: 0 0 64px rgba(255,59,48,.35);
+
+  /* ── Bordes ──────────────────────────────────────────────── */
+  --border-width: 1px;
+  --ring: 0 0 0 3px rgba(192,35,27,.35);          /* focus-visible accesible */
+}
+
+/* Contenedor central reutilizable */
+.a1s-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}

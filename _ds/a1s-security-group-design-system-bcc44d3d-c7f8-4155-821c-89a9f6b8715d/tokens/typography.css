@@ -1,0 +1,71 @@
+/* A1S Security Group — Typography tokens
+   Una sola familia: Montserrat. Titulares 700/600, cuerpo 400/500.
+   Eyebrows: rojo, itálica, uppercase, tracking amplio (recurso heredado del Wix). */
+
+:root {
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Pesos */
+  --fw-regular: 400;    /* @kind font */
+  --fw-medium: 500;     /* @kind font */
+  --fw-semibold: 600;   /* @kind font */
+  --fw-bold: 700;       /* @kind font */
+
+  /* Escala fluida (clamp) — Hero, títulos, sección, cuerpo */
+  --fs-display: clamp(2.75rem, 6vw, 5.5rem); /* @kind font */
+  --fs-h1: clamp(2.25rem, 4vw, 3.5rem); /* @kind font */
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem); /* @kind font */
+  --fs-h3: clamp(1.25rem, 2vw, 1.5rem); /* @kind font */
+  --fs-body-lg: 1.125rem; /* @kind font */
+  --fs-body: 1rem; /* @kind font */
+  --fs-small: 0.875rem; /* @kind font */
+  --fs-eyebrow: 0.8125rem; /* @kind font */
+
+  /* Interlineado */
+  --lh-tight: 1.08; /* @kind font */
+  --lh-snug: 1.25; /* @kind font */
+  --lh-body: 1.6; /* @kind font */
+
+  /* Tracking */
+  --ls-tight: -0.02em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-eyebrow: 0.12em; /* @kind font */
+
+  /* Medida (ancho de línea) */
+  --measure: 68ch; /* @kind other */
+}
+
+/* ── Clases de tipografía utilitarias ──────────────────────── */
+.a1s-display {
+  font: var(--fw-bold) var(--fs-display)/var(--lh-tight) var(--font-display);
+  letter-spacing: var(--ls-tight);
+}
+.a1s-h1 {
+  font: var(--fw-bold) var(--fs-h1)/var(--lh-tight) var(--font-display);
+  letter-spacing: var(--ls-tight);
+}
+.a1s-h2 {
+  font: var(--fw-bold) var(--fs-h2)/1.12 var(--font-display);
+  letter-spacing: var(--ls-tight);
+}
+.a1s-h3 {
+  font: var(--fw-semibold) var(--fs-h3)/var(--lh-snug) var(--font-display);
+}
+.a1s-lead {
+  font: var(--fw-regular) var(--fs-body-lg)/var(--lh-body) var(--font-sans);
+}
+.a1s-body {
+  font: var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-sans);
+}
+.a1s-small {
+  font: var(--fw-regular) var(--fs-small)/1.5 var(--font-sans);
+}
+
+/* Eyebrow — recurso de firma: rojo, itálica, uppercase, tracking amplio */
+.a1s-eyebrow {
+  font: italic var(--fw-semibold) var(--fs-eyebrow)/1.2 var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--eyebrow);
+}
