@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: a1s-web
+    ports:
+      - "80:8080"
+      - "443:8080"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8080
+    restart: unless-stopped
