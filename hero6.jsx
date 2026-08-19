@@ -15,13 +15,13 @@ function HeroFigure6() {
     // sombra de piso (ancla la figura)
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', left: '8%', right: '8%', bottom: '-2.5%', height: '9%', background: 'radial-gradient(50% 50% at 50% 50%, rgba(12,2,1,.55), transparent 70%)', filter: 'blur(10px)' } }),
     // FALLBACK: foto combinada (solo si faltaran las capas)
-    React.createElement('img', { className: 'hero-fallback', src: 'assets/people/hero-escolta.png?v=2', alt: '', 'aria-hidden': true, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'none' } }),
+    React.createElement('img', { className: 'hero-fallback', src: 'assets/people/hero-escolta.png?v=2', alt: '', 'aria-hidden': true, loading: 'eager', decoding: 'async', fetchPriority: 'high', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'none' } }),
     // CAPA 1 · CARRO (sin sirena, totalmente quieto) — desplazado a la derecha para no tapar los CTA
-    React.createElement('img', { src: 'assets/people/carro-sin-sirena.png', alt: 'Patrulla A1S', style: { position: 'absolute', left: '0.5%', width: '99%', bottom: '4.5%', height: '62%', objectFit: 'contain', objectPosition: '50% 100%' } }),
+    React.createElement('img', { src: 'assets/people/carro-sin-sirena.png', alt: 'Patrulla A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', left: '0.5%', width: '99%', bottom: '4.5%', height: '62%', objectFit: 'contain', objectPosition: '50% 100%' } }),
     // CAPA 2 · GUARDA (idle sutil: respiración + balanceo de peso)
     React.createElement('div', { className: reduce ? '' : 'a1s-idle-sway', style: { position: 'absolute', left: '22%', right: '22%', bottom: 0, height: '81%' } },
       React.createElement('div', { className: reduce ? '' : 'a1s-idle-breathe', style: { position: 'absolute', inset: 0 } },
-        React.createElement('img', { src: 'assets/people/guarda-solo.png', alt: 'Escolta A1S', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: '50% 100%' } }))));
+        React.createElement('img', { src: 'assets/people/guarda-solo.png', alt: 'Escolta A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: '50% 100%' } }))));
 }
 
 function HomeHero6({ go }) {
@@ -62,7 +62,7 @@ function HomeHero6({ go }) {
           React.createElement('span', { className: 'a1s-word-hi', style: { textShadow: 'none' } }, 'Protegemos'), React.createElement('br', null), 'lo que más', React.createElement('br', null), 'importa.'),
         React.createElement('p', { style: { margin: '26px 0 0', maxWidth: '44ch', fontSize: 'clamp(1.05rem,1.5vw,1.2rem)', lineHeight: 1.6, color: 'rgba(255,255,255,.95)', textShadow: '0 2px 12px rgba(20,3,2,.4)' } },
           'Más de ', React.createElement('strong', null, '55 años'), ' integrando seguridad humana y tecnología avanzada, con monitoreo permanente ', React.createElement('strong', null, '24/7'), '.'),
-        React.createElement('div', { style: { display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' } },
+        React.createElement('div', { className: 'a1s-hero-actions', style: { display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' } },
           React.createElement(Btn, { variant: 'solid', size: 'lg', className: 'a1s-beacon', onClick: () => go('contacto'), iconRight: React.createElement(Icons.arrowUR, { size: 18 }), style: { background: '#16090A', color: '#fff' } }, 'Cotización gratuita'),
           React.createElement(Btn, { variant: 'on-dark', size: 'lg', onClick: () => go('servicios'), style: { borderColor: 'rgba(255,255,255,.4)' } }, 'Conoce nuestros servicios'))),
       React.createElement(Reveal, { delay: 200, className: 'a1s-stats6 a1s-hero-stats', style: { marginTop: 'clamp(2.4rem,5.5vw,4rem)' } },

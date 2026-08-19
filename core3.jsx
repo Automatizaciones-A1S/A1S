@@ -35,7 +35,7 @@ function Reveal({ children, delay = 0, y = 22, as = 'div', style = {}, ...rest }
   }, [reduce]);
   const El = as;
   let dyn = {};
-  if (!reduce) dyn = seen ? { animation: `a1s-rise .7s var(--ease-out) ${delay}ms both` } : { transform: `translateY(${y}px)`, willChange: 'transform' };
+  if (!reduce) dyn = seen ? {} : { transform: `translateY(${y}px)`, willChange: 'transform' };
   return React.createElement(El, { ref, style: { ...style, ...dyn }, ...rest }, children);
 }
 

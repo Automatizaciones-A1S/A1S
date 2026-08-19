@@ -7,6 +7,11 @@
 <meta name="format-detection" content="telephone=no">
 <title>A1S Security Group — Protegemos lo que más importa</title>
 <meta name="description" content="A1S — A 1 Security Group. Seguridad privada para Colombia con +55 años de experiencia. Seguridad humana + tecnología avanzada, monitoreo 24/7.">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="dns-prefetch" href="https://unpkg.com">
+<link rel="preload" as="image" href="assets/people/hero-escolta.png?v=2">
+<link rel="preload" as="image" href="assets/people/carro-sin-sirena.png">
+<link rel="preload" as="image" href="assets/people/guarda-solo.png">
 <link rel="stylesheet" href="styles/styles.css">
 <link rel="stylesheet" href="styles/home6.css?v=6">
 <link rel="stylesheet" href="styles/additions.css?v=6">
@@ -58,31 +63,23 @@
   @keyframes a1s-breathe { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-12px) scale(1.012); } }
   .a1s-breathe { animation: a1s-breathe 7s ease-in-out infinite; transition: transform .25s var(--ease-out); }
   .a1s-hero-stats [style*="tabular-nums"] { text-shadow: 0 0 26px rgba(255,80,60,.45); }
-  .a1s-hero-copy { position: relative; }
+  .a1s-hero-copy { position: relative; z-index: 8; width: 100%; }
+  .a1s-hero-copy h1 { text-shadow: 0 4px 16px rgba(20,3,2,.45), 0 16px 48px rgba(20,3,2,.35); }
+  .a1s-hero-copy .a1s-hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
   @media (max-width: 980px) {
     .a1s-hero-copy { max-width: 86% !important; }
   }
   @media (max-width: 760px) {
-    .a1s-hero-copy { max-width: 100% !important; }
+    .a1s-hero-copy { max-width: 100% !important; padding-right: 0; }
+    .a1s-hero-copy h1 { font-size: clamp(2.35rem, 8.6vw, 3.2rem) !important; line-height: .95 !important; letter-spacing: -.025em !important; text-shadow: 0 4px 16px rgba(20,3,2,.45), 0 12px 30px rgba(20,3,2,.35); }
+    .a1s-hero-copy p { font-size: 1rem !important; line-height: 1.6 !important; max-width: 100% !important; }
+    .a1s-hero-copy .a1s-hero-actions { margin-top: 24px !important; gap: 10px !important; flex-direction: column !important; align-items: flex-start !important; }
     .a1s-breathe { opacity: .22 !important; right: -28% !important; height: 70% !important; }
     .a1s-hero-stats { gap: 1.4rem 1.8rem !important; }
   }
 
-  /* ── Media panel: scanline + REC ── */
-  .a1s-scan { position: absolute; left: 0; right: 0; height: 2px; top: 0; background: linear-gradient(90deg, transparent, rgba(255,59,48,.55), transparent); animation: a1s-scanmove 4.5s linear infinite; opacity: .7; }
-  @keyframes a1s-scanmove { 0% { top: 4%; } 100% { top: 96%; } }
-  .a1s-rec { animation: a1s-blink 1.4s steps(2, start) infinite; }
-  @keyframes a1s-blink { 50% { opacity: .25; } }
-
-  /* ── Ping (pines del mapa) ── */
-  .a1s-ping { transform-box: fill-box; transform-origin: center; animation: a1s-ping 2s ease-out infinite; }
-  @keyframes a1s-ping { 0% { opacity: .6; transform: scale(.5); } 100% { opacity: 0; transform: scale(1.6); } }
-
-  /* ── Radar sweep en el mapa ── */
-  .a1s-radar-sweep { position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background: conic-gradient(from 0deg at 56% 38%, rgba(255,59,48,.18), transparent 28%);
-    mix-blend-mode: screen; animation: a1s-sweep 5s linear infinite; }
-  @keyframes a1s-sweep { to { transform: rotate(360deg); } }
+  /* ── Indicadores visuales desactivados ── */
+  .a1s-scan, .a1s-rec, .a1s-ping, .a1s-radar-sweep { display: none !important; }
 
   /* ── Scroll cue ── */
   .a1s-scrollcue { width: 22px; height: 34px; border: 1.5px solid var(--dark-muted); border-radius: 12px; position: relative; flex: none; }
@@ -168,39 +165,39 @@
 </template>
 
 <!-- 3D / efectos (plain JS, requieren THREE) -->
-<script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
-<script src="js/cursor.js?v=2"></script>
-<script src="js/cursor-aim.js"></script>
-<script src="js/hero3d.js?v=2"></script>
-<script src="js/colombia.js?v=6"></script>
-<script src="js/image-slot.js"></script>
+<script defer src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+<script defer src="js/cursor.js?v=2"></script>
+<script defer src="js/cursor-aim.js"></script>
+<script defer src="js/hero3d.js?v=2"></script>
+<script defer src="js/colombia.js?v=6"></script>
+<script defer src="js/image-slot.js"></script>
 
 <!-- React + Babel -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
 <!-- App (orden: tweaks → core → illus → chrome → views → app) -->
-<script type="text/babel" src="tweaks-panel.jsx?v=2"></script>
-<script type="text/babel" src="core3.jsx?v=2"></script>
-<script type="text/babel" src="brand.jsx?v=2"></script>
-<script type="text/babel" src="illus2.jsx?v=2"></script>
-<script type="text/babel" src="hero5.jsx"></script>
-<script type="text/babel" src="hero6.jsx?v=4"></script>
-<script type="text/babel" src="chrome2.jsx?v=7"></script>
-<script type="text/babel" src="view-home5.jsx?v=2"></script>
-<script type="text/babel" src="view-home6.jsx?v=6"></script>
-<script type="text/babel" src="view-home6b.jsx?v=8"></script>
-<script type="text/babel" src="view-servicios.jsx?v=4"></script>
-<script type="text/babel" src="view-cobertura.jsx?v=8"></script>
-<script type="text/babel" src="view-talento.jsx?v=3"></script>
-<script type="text/babel" src="view-pagos.jsx?v=3"></script>
-<script type="text/babel" src="view-certificado.jsx?v=2"></script>
-<script type="text/babel" src="view-nomina-guias.jsx?v=2"></script>
-<script type="text/babel" src="view-blog.jsx?v=6"></script>
-<script type="text/babel" src="app5.jsx?v=4"></script>
+<script defer type="text/babel" src="tweaks-panel.jsx?v=2"></script>
+<script defer type="text/babel" src="core3.jsx?v=2"></script>
+<script defer type="text/babel" src="brand.jsx?v=2"></script>
+<script defer type="text/babel" src="illus2.jsx?v=2"></script>
+<script defer type="text/babel" src="hero5.jsx"></script>
+<script defer type="text/babel" src="hero6.jsx?v=4"></script>
+<script defer type="text/babel" src="chrome2.jsx?v=7"></script>
+<script defer type="text/babel" src="view-home5.jsx?v=2"></script>
+<script defer type="text/babel" src="view-home6.jsx?v=6"></script>
+<script defer type="text/babel" src="view-home6b.jsx?v=8"></script>
+<script defer type="text/babel" src="view-servicios.jsx?v=4"></script>
+<script defer type="text/babel" src="view-cobertura.jsx?v=8"></script>
+<script defer type="text/babel" src="view-talento.jsx?v=3"></script>
+<script defer type="text/babel" src="view-pagos.jsx?v=3"></script>
+<script defer type="text/babel" src="view-certificado.jsx?v=2"></script>
+<script defer type="text/babel" src="view-nomina-guias.jsx?v=2"></script>
+<script defer type="text/babel" src="view-blog.jsx?v=6"></script>
+<script defer type="text/babel" src="app5.jsx?v=4"></script>
 
 <!-- Aviso de cookies (Centro de Control) -->
-<script src="js/cookies.js?v=1"></script>
+<script defer src="js/cookies.js?v=1"></script>
 </body>
 </html>

@@ -34,7 +34,6 @@ function SlotPanel({ slotId, photo = null, scene = null, label, status = 'EN VIV
       React.createElement('svg', { viewBox: '0 0 200 200', style: { width: '88%', height: '88%', overflow: 'visible' } }, React.createElement(Scene))),
     // DROP-ZONE 4K (con fallback a la foto actual si existe)
     React.createElement('image-slot', Object.assign({ id: slotId, className: 'slot-ghost', fit: fit || (photo ? 'contain' : 'cover'), position: position, radius: '20', placeholder }, photo ? { src: photo } : {}, { style: { position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 2 } })),
-    !reduce && React.createElement('div', { className: 'a1s-scan', 'aria-hidden': true, style: { zIndex: 3 } }),
     // chrome HUD
     [['top', 'left'], ['top', 'right'], ['bottom', 'left'], ['bottom', 'right']].map((c, i) =>
       React.createElement('span', { key: i, 'aria-hidden': true, style: { position: 'absolute', [c[0]]: 14, [c[1]]: 14, width: 18, height: 18, zIndex: 4, [`border${c[0][0].toUpperCase() + c[0].slice(1)}`]: '2px solid rgba(255,255,255,.42)', [`border${c[1][0].toUpperCase() + c[1].slice(1)}`]: '2px solid rgba(255,255,255,.42)' } })),

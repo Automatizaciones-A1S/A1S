@@ -6,13 +6,11 @@
 .a1s-word-hi {
   display: inline-block;
   background: linear-gradient(102deg, #fff 0%, #fff 32%, #FFC9C1 44%, #FF8D7E 50%, #FFC9C1 56%, #fff 68%, #fff 100%);
-  background-size: 240% 100%; background-position: 120% 0;
+  background-size: 240% 100%; background-position: 50% 0;
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 0 26px rgba(255,110,90,.5)) drop-shadow(0 4px 14px rgba(20,3,2,.45));
-  animation: a1s-word-shine 5.2s var(--ease-standard) infinite;
 }
-@keyframes a1s-word-shine { 0%, 18% { background-position: 120% 0; } 58%, 100% { background-position: -120% 0; } }
-html.a1s-static .a1s-word-hi { animation: none; background-position: 50% 0; }
+html.a1s-static .a1s-word-hi { background-position: 50% 0; }
 
 /* ── Steps: hover con vida ─────────────────────────────────────────── */
 .a1s-step6 { position: relative; overflow: hidden; transition: transform .35s var(--ease-out), background .35s, border-color .35s, box-shadow .35s; }
@@ -86,8 +84,8 @@ html.a1s-static .a1s-hablemos { animation: none; background-position: 50% 0; }
   0%, 100% { transform: scaleY(1) translateY(0); }
   46%      { transform: scaleY(1.007) translateY(-2.5px); }
 }
-.a1s-idle-sway   { animation: a1s-idle-sway 11s ease-in-out infinite; transform-origin: 50% 96%; will-change: transform; }
-.a1s-idle-breathe{ animation: a1s-idle-breathe 6.5s ease-in-out infinite; transform-origin: 50% 96%; will-change: transform; }
+.a1s-idle-sway   { transform-origin: 50% 96%; will-change: transform; }
+.a1s-idle-breathe{ transform-origin: 50% 96%; will-change: transform; }
 html.a1s-static .a1s-idle-sway, html.a1s-static .a1s-idle-breathe,
 html.a1s-no-idle .a1s-idle-sway, html.a1s-no-idle .a1s-idle-breathe { animation: none; }
 
@@ -112,7 +110,7 @@ html.a1s-static .a1s-map-radar { animation: none; }
   background: var(--a1s-red); box-shadow: 0 0 0 3px rgba(192,35,27,.25), 0 0 12px var(--a1s-red-glow); }
 .a1s-mappin-dot::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: #fff; }
 .a1s-mappin-ping { position: absolute; left: 0; top: 0; width: 11px; height: 11px; margin: -5.5px; border-radius: 50%;
-  border: 1.5px solid var(--a1s-red); opacity: .5; transform-origin: center; animation: a1s-ping 2.4s ease-out infinite; }
+  border: 1.5px solid var(--a1s-red); opacity: .5; transform-origin: center; }
 html.a1s-static .a1s-mappin-ping { animation: none; }
 .a1s-mappin-label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); white-space: nowrap;
   font-family: var(--font-sans); line-height: 1.05; text-shadow: 0 1px 6px rgba(0,0,0,.7); }
@@ -302,7 +300,19 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
   .a1s-hero6-figure { right: -42% !important; height: min(84%, 720px) !important; opacity: .94; }
 }
 @media (max-width: 860px) {
-  .a1s-hero6-figure { position: relative !important; right: auto !important; left: 50% !important; transform: translateX(-50%) !important; height: 56vh !important; margin: 26px auto 0 !important; }
+  .a1s-hero6-figure {
+    position: absolute !important;
+    right: -8% !important;
+    left: auto !important;
+    bottom: -2% !important;
+    transform: none !important;
+    height: min(58vh, 540px) !important;
+    margin: 0 !important;
+    opacity: .96;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .a1s-hero-copy { padding-right: clamp(96px, 22vw, 170px) !important; }
   .a1s-svc-grid { grid-template-columns: 1fr !important; }
   .a1s-portal-grid { grid-template-columns: 1fr !important; }
   .a1s-cert-grid { grid-template-columns: 1fr !important; }
@@ -310,7 +320,13 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
 }
 
 @media (max-width: 760px) {
-  .a1s-hero6-figure { height: min(44vh, 360px) !important; opacity: .96; }
+  .a1s-hero6-figure {
+    height: min(44vh, 320px) !important;
+    right: -18% !important;
+    bottom: -4% !important;
+    opacity: .96;
+  }
+  .a1s-hero-copy { padding-right: 88px !important; }
   .a1s-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; width: 100% !important; max-width: none !important; gap: 1rem 1rem !important; }
   .a1s-step6 { padding: 22px 18px 20px !important; }
   .a1s-certseal { white-space: normal; padding: 14px 18px; }
