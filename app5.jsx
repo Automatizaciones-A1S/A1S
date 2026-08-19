@@ -19,6 +19,33 @@ const VIEWS = {
 };
 const DARK_HERO = ['home', 'servicios', 'cobertura', 'certificaciones', 'talento', 'pagos', 'certificado', 'blog'];
 
+class AppErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { hasError: false, error: null }; }
+  static getDerivedStateFromError(error) { return { hasError: true, error }; }
+  componentDidCatch(error, errorInfo) { console.error('App render failed', error, errorInfo); }
+  render() {
+    if (this.state.hasError) {
+      return React.createElement('div', { style: { minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24, background: '#060606', color: '#fff' } },
+        React.createElement('div', { style: { maxWidth: 480, textAlign: 'center', border: '1px solid rgba(255,255,255,.14)', borderRadius: 20, padding: '24px 20px', background: 'rgba(255,255,255,.04)' } },
+          React.createElement('div', { style: { fontWeight: 700, fontSize: '1.05rem', marginBottom: 10 } }, 'No se pudo cargar la vista completa.'),
+          React.createElement('p', { style: { margin: 0, color: 'rgba(255,255,255,.74)', lineHeight: 1.6 } }, 'La página se recuperará automáticamente al refrescar. Si persiste, revisa la consola del navegador.')));
+    }
+    return this.props.children;
+  }
+}
+
+function AppShell() {
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => {
+    const loader = document.getElementById('a1s-app-loader');
+    if (loader) loader.remove();
+    setReady(true);
+  }, []);
+
+  if (!ready) return null;
+  return React.createElement(App);
+}
+
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [route, setRoute] = React.useState('home');
@@ -88,4 +115,7 @@ function App() {
       React.createElement(TweakColor, { label: 'Acento', value: t.accent, options: ['#C0231B', '#A91D16', '#5B5B5F'], onChange: (v) => setTweak('accent', v) })));
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  React.createElement(AppErrorBoundary, null,
+    React.createElement(AppShell))
+);

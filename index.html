@@ -20,6 +20,10 @@
   body { font-family: var(--font-sans); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
   * { box-sizing: border-box; }
   #root { min-height: 100vh; }
+  .a1s-app-loader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: radial-gradient(circle at top, #1c1514 0%, #09090b 60%, #050505 100%); color: #fff; }
+  .a1s-app-loader__card { width: min(92vw, 320px); padding: 26px 24px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: rgba(8,8,11,.86); box-shadow: 0 24px 70px rgba(0,0,0,.35); text-align: center; }
+  .a1s-app-loader__ring { width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 50%; border: 3px solid rgba(255,255,255,.16); border-top-color: var(--a1s-red); animation: a1s-spin .9s linear infinite; }
+  @keyframes a1s-spin { to { transform: rotate(360deg); } }
   h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
   p { text-wrap: pretty; }
   a { -webkit-tap-highlight-color: transparent; }
@@ -152,6 +156,13 @@
 </style>
 </head>
 <body>
+<div id="a1s-app-loader" class="a1s-app-loader" role="status" aria-live="polite">
+  <div class="a1s-app-loader__card">
+    <div class="a1s-app-loader__ring" aria-hidden="true"></div>
+    <div style="font-size: .95rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.72);">A1S</div>
+    <div style="margin-top: 8px; font-weight: 700;">Cargando la página…</div>
+  </div>
+</div>
 <div id="root"></div>
 
 <template id="__bundler_thumbnail">

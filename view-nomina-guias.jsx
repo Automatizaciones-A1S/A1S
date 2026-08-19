@@ -60,13 +60,34 @@ function GuideHero({ logo, name, lead, chips, back, actions }) {
 
 /* ── Nota de contraseña olvidada ── */
 function PwdNote({ go }) {
-  return React.createElement(NgReveal, { delay: 160, style: { marginTop: 26, display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap', background: 'var(--surface)', border: '1px dashed var(--border-strong)', borderRadius: 'var(--radius-lg)', padding: '22px 28px' } },
+  return React.createElement(
+    NgReveal,
+    {
+      delay: 160,
+      style: {
+        marginTop: 26,
+        display: 'flex',
+        gap: 16,
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        background: 'var(--surface)',
+        border: '1px dashed var(--border-strong)',
+        borderRadius: 'var(--radius-lg)',
+        padding: '22px 28px'
+      }
+    },
     React.createElement('span', { style: { flex: 'none', color: NG_RED }, 'aria-hidden': true }, React.createElement(NgIcons.lock, { size: 22 })),
     React.createElement('div', null,
       React.createElement('h3', { style: { margin: 0, fontSize: '1.05rem', fontWeight: 700 } }, '¿Olvidaste tu contraseña?'),
       React.createElement('p', { style: { margin: '3px 0 0', color: 'var(--text-muted)', fontSize: '.9375rem', maxWidth: '62ch' } }, 'Radica una PQRS solicitando el reinicio de tu contraseña. El área encargada la restablece y te confirma para que puedas volver a ingresar.')),
     React.createElement('div', { style: { marginLeft: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap' } },
-      React.createElement(NgBtn, { variant: 'primary', href: 'PQRS.html', iconRight: React.createElement(NgIcons.arrow, { size: 16 }) }, 'Radicar PQRS'))));
+      React.createElement(
+        NgBtn,
+        { variant: 'primary', href: 'PQRS.html', iconRight: React.createElement(NgIcons.arrow, { size: 16 }) },
+        'Radicar PQRS'
+      )
+    )
+  );
 }
 
 /* ══ PRONOS ══════════════════════════════════════════════════════════════ */

@@ -39,7 +39,7 @@ function SlotPanel({ slotId, photo = null, scene = null, label, status = 'EN VIV
       React.createElement('span', { key: i, 'aria-hidden': true, style: { position: 'absolute', [c[0]]: 14, [c[1]]: 14, width: 18, height: 18, zIndex: 4, [`border${c[0][0].toUpperCase() + c[0].slice(1)}`]: '2px solid rgba(255,255,255,.42)', [`border${c[1][0].toUpperCase() + c[1].slice(1)}`]: '2px solid rgba(255,255,255,.42)' } })),
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.6), transparent 38%)', zIndex: 3, pointerEvents: 'none' } }),
     React.createElement('div', { style: { position: 'absolute', top: 16, left: 18, display: 'inline-flex', alignItems: 'center', gap: 7, fontSize: '.7rem', fontWeight: 600, letterSpacing: '.1em', color: 'rgba(255,255,255,.8)', zIndex: 4, pointerEvents: 'none', whiteSpace: 'nowrap' } },
-      React.createElement('span', { className: reduce ? '' : 'a1s-rec', style: { width: 8, height: 8, borderRadius: '50%', background: 'var(--a1s-red)', boxShadow: '0 0 8px var(--a1s-red-glow)' } }), status),
+      status),
     label && React.createElement('span', { style: { position: 'absolute', left: 18, bottom: 14, fontSize: '.8125rem', fontWeight: 600, color: 'rgba(255,255,255,.92)', zIndex: 4, pointerEvents: 'none', whiteSpace: 'nowrap' } }, label),
     React.createElement('span', { style: { position: 'absolute', right: 18, bottom: 14, fontSize: '.7rem', fontVariantNumeric: 'tabular-nums', color: 'rgba(255,255,255,.5)', zIndex: 4, pointerEvents: 'none' } }, 'CAM · A1S'));
 }
