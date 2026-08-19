@@ -124,7 +124,7 @@ function ContactoView() {
       React.createElement(Reveal, null,
         React.createElement(SectionHead, { eyebrow: 'Avancemos juntos', title: 'Cuéntanos qué necesitas proteger.', lead: 'Diseñamos un esquema a tu medida. Nuestros expertos te asesoran sin costo.' }),
         React.createElement('div', { style: { marginTop: 32, display: 'flex', flexDirection: 'column', gap: 18 } },
-          [[Icons.phone, 'Teléfono / WhatsApp', '+57 305 771 0909'], [Icons.clock, 'Operación', '24 / 7 · Centro de Control nacional'], [Icons.pin, 'Regionales', 'Cartagena · Bucaramanga · Medellín · Bogotá · Cali']].map(([Ic, t, d], i) =>
+          [[Icons.clock, 'Operación', '24 / 7 · Centro de Control nacional'], [Icons.pin, 'Regionales', 'Cartagena · Bucaramanga · Medellín · Bogotá · Cali']].map(([Ic, t, d], i) =>
             React.createElement('div', { key: i, style: { display: 'flex', gap: 14, alignItems: 'flex-start' } },
               React.createElement('span', { style: { flex: 'none', width: 44, height: 44, borderRadius: '50%', display: 'grid', placeItems: 'center', background: 'var(--surface)', border: '1px solid var(--border)', color: RED } }, React.createElement(Ic, { size: 20 })),
               React.createElement('div', null,

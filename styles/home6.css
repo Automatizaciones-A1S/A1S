@@ -152,6 +152,10 @@ image-slot.slot-ghost:not([data-filled]):hover, image-slot.slot-ghost[data-over]
 /* Capas del hero: si el usuario soltó CUALQUIER capa, ocultar el fallback */
 .a1s-hero-figure .hero-fallback { transition: opacity .4s; }
 .a1s-hero-figure:has(image-slot[data-filled]) .hero-fallback { opacity: 0; visibility: hidden; }
+@media (max-width: 768px) {
+  .a1s-hero-figure .hero-fallback,
+  .a1s-hero-figure img[src*='hero-escolta.png'] { display: none !important; }
+}
 /* Capas vacías sobre el hero: muy discretas hasta hover/drag */
 .a1s-hero-figure image-slot:not([data-filled]) { opacity: 0; }
 .a1s-hero-figure:hover image-slot:not([data-filled]),

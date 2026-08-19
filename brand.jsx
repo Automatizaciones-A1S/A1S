@@ -31,7 +31,7 @@ function Logo({ color = 'currentColor', height = 38, variant = 'mark', style = {
   // ni la bajada "Security Group" se recorten en ningún contenedor.
   const vb = lockup ? '-12 276 998 466' : '-12 276 995 400';
   const paths = lockup ? A1S_MARK.concat(A1S_SUB) : A1S_MARK;
-  return React.createElement('svg', { viewBox: vb, role: 'img', 'aria-label': 'A1S Security Group', style: { height, width: 'auto', display: 'block', color, overflow: 'visible', ...style } },
+  return React.createElement('svg', { viewBox: vb, role: 'img', 'aria-label': 'A1S Security Group', style: { height, width: 'auto', display: 'block', color, overflow: 'visible', margin: 0, padding: 0, verticalAlign: 'middle', ...style } },
     paths.map((d, i) => React.createElement('path', { key: i, d, fill: 'currentColor' })));
 }
 

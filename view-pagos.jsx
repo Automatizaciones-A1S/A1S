@@ -47,7 +47,7 @@ function PagosView({ go }) {
           React.createElement('span', { style: { flex: 'none', color: RED }, 'aria-hidden': true }, React.createElement(Icons.phone, { size: 22 })),
           React.createElement('div', null,
             React.createElement('h3', { style: { margin: 0, fontSize: '1.05rem', fontWeight: 700 } }, '¿Dudas con tu pago o tu factura?'),
-            React.createElement('p', { style: { margin: '3px 0 0', color: 'var(--text-muted)', fontSize: '.9375rem' } }, 'Escríbenos al +57 305 771 0909 por WhatsApp o radica tu caso por PQRS y te ayudamos.')),
+            React.createElement('p', { style: { margin: '3px 0 0', color: 'var(--text-muted)', fontSize: '.9375rem' } }, 'Escríbenos por WhatsApp o radica tu caso por PQRS y te ayudamos.')),
           React.createElement('div', { style: { marginLeft: 'auto' } }, React.createElement(Btn, { variant: 'outline', onClick: () => go('contacto'), iconRight: React.createElement(Icons.arrow, { size: 16 }) }, 'Contáctanos')))))
   );
 }

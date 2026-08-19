@@ -30,9 +30,9 @@ function Navbar({ route, go, darkHero }) {
     React.createElement('header', { style: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60, transition: 'all .3s var(--ease-standard)',
       background: scrolled ? 'color-mix(in srgb, var(--a1s-white) 86%, transparent)' : 'transparent', backdropFilter: scrolled ? 'saturate(150%) blur(14px)' : 'none',
       borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent' } },
-      React.createElement('div', { style: { ...WRAP, display: 'flex', alignItems: 'center', gap: 22, height: scrolled ? 64 : 78, transition: 'height .3s' } },
-        React.createElement('a', { className: 'a1s-int', onClick: () => navTo('home'), style: { cursor: 'pointer', display: 'flex' } },
-          React.createElement(Logo, { color: onDark ? '#fff' : 'var(--a1s-red)', height: scrolled ? 30 : 34 })),
+      React.createElement('div', { style: { ...WRAP, display: 'flex', alignItems: 'center', gap: 18, height: scrolled ? 64 : 78, transition: 'height .3s', paddingTop: 0, paddingBottom: 0 } },
+        React.createElement('a', { className: 'a1s-int', onClick: () => navTo('home'), style: { cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: '2px 0 0', marginRight: 12, lineHeight: 0 } },
+          React.createElement(Logo, { color: onDark ? '#fff' : 'var(--a1s-red)', height: scrolled ? 30 : 34, style: { margin: 0, padding: 0, transform: 'translateX(-1px)' } })),
         React.createElement('nav', { className: 'a1s-navlinks', style: { marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4 } },
           NAV_LINKS.map(([id, label]) => React.createElement('a', { key: id, className: 'a1s-int', onClick: () => navTo(id),
             style: { cursor: 'pointer', padding: '9px 15px', borderRadius: 'var(--radius-pill)', fontSize: '.9375rem', fontWeight: 600, transition: 'all .2s',
@@ -50,7 +50,8 @@ function Navbar({ route, go, darkHero }) {
     // Menú móvil full-screen
     open && React.createElement('div', { className: 'a1s-dark', style: { position: 'fixed', inset: 0, zIndex: 90, background: 'var(--dark-bg)', color: '#fff', display: 'flex', flexDirection: 'column', padding: '22px var(--gutter)' } },
       React.createElement('div', { style: { display: 'flex', alignItems: 'center' } },
-        React.createElement(Logo, { color: '#fff', height: 32 }),
+        React.createElement('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginRight: 12, lineHeight: 0 } },
+          React.createElement(Logo, { color: '#fff', height: 32 })),
         React.createElement('button', { className: 'a1s-int', onClick: () => setOpen(false), 'aria-label': 'Cerrar', style: { marginLeft: 'auto', background: 'none', border: 'none', color: '#fff', cursor: 'pointer' } }, React.createElement(Icons.close, { size: 28 }))),
       React.createElement('nav', { style: { display: 'flex', flexDirection: 'column', gap: 4, marginTop: 40 } },
         [['home', 'Inicio'], ...NAV_LINKS, ['talento', 'Trabaja con nosotros'], ['contacto', 'Contacto']].map(([id, label]) =>
@@ -58,7 +59,7 @@ function Navbar({ route, go, darkHero }) {
             style: { cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '2rem', letterSpacing: '-.02em', padding: '12px 0', borderBottom: '1px solid var(--dark-line)', color: route === id ? 'var(--a1s-red-400)' : '#fff' } }, label))),
       React.createElement('div', { style: { marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 14 } },
         React.createElement(Btn, { variant: 'primary', size: 'lg', onClick: () => navTo('contacto') }, '¡Cotización gratuita!'),
-        React.createElement('span', { style: { color: 'var(--dark-muted)', fontSize: '.875rem' } }, '+57 305 771 0909 · 24/7'))));
+        React.createElement('span', { style: { color: 'var(--dark-muted)', fontSize: '.875rem' } }, 'Atención 24/7'))));
 }
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
@@ -91,7 +92,7 @@ function Footer({ go }) {
             React.createElement('div', { style: { fontSize: '.875rem', fontWeight: 600 } }, r),
             React.createElement('div', { style: { fontSize: '.8125rem', color: 'var(--dark-muted)' } }, c))))),
       React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: 16, padding: '22px 0', borderTop: '1px solid var(--dark-line)', flexWrap: 'wrap' } },
-        React.createElement('span', { style: { fontSize: '.8125rem', color: 'var(--dark-muted)' } }, '+57 305 771 0909 · Atención 24/7'),
+        React.createElement('span', { style: { fontSize: '.8125rem', color: 'var(--dark-muted)' } }, 'Atención 24/7'),
         React.createElement('a', { className: 'a1s-int', href: 'PQRS.html', style: { fontSize: '.8125rem', color: 'var(--a1s-red-400)', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 } },
           React.createElement(Icons.doc, { size: 15 }), 'Radicar PQRS'),
         React.createElement('a', { className: 'a1s-int', onClick: () => go('pagos'), style: { fontSize: '.8125rem', color: 'var(--a1s-red-400)', fontWeight: 700, textDecoration: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 7 } },

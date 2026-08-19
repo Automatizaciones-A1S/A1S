@@ -90,7 +90,7 @@ function Clients6() {
 function Portals6({ go }) {
   const portals = [
     { kicker: 'Clientes', title: 'Protege lo que más importa', desc: 'Empresas, conjuntos residenciales y personas: diseñamos tu esquema de seguridad a la medida y lo medimos todos los días.', cta: 'Ver soluciones', route: 'servicios', slot: 'portal-cliente', src: 'assets/people/portal-cliente.png', fit: 'cover', position: '50% 32%', placeholder: 'Foto 4K · Escolta + SUV en acción (3:4)', dark: false },
-    { kicker: 'Talento', title: 'Únete al equipo A1S', desc: 'Construye tu carrera en seguridad con estabilidad, formación constante y un equipo que te respalda.', cta: 'Ver vacantes', route: 'talento', slot: 'portal-talento', src: 'assets/people/portal-talento.png', fit: 'cover', position: '50% 30%', placeholder: 'Foto 4K · Colaborador A1S retrato (3:4)', dark: true },
+    { kicker: 'Talento', title: 'Únete al equipo A1S', desc: 'Construye tu carrera en seguridad con estabilidad, formación constante y un equipo que te respalda.', cta: 'Ver vacantes', route: 'talento', slot: 'portal-talento', src: 'assets/CAMBIO PERSONA A1S 1.jpeg', fit: 'cover', position: '50% 30%', placeholder: 'Foto 4K · Colaborador A1S retrato (3:4)', dark: true },
   ];
   return React.createElement('section', { 'data-screen-label': 'Clientes y Talento' },
     React.createElement('div', { className: 'a1s-portal-grid a1s-split-final', style: { display: 'grid', gridTemplateColumns: '1fr 1fr' } },
@@ -126,8 +126,7 @@ function FinalCTA6({ go }) {
         React.createElement('p', { style: { margin: '26px auto 0', maxWidth: '54ch', color: 'var(--dark-muted)', fontSize: '1.0625rem', lineHeight: 1.65 } },
           'Cuéntanos qué necesitas proteger. Un experto A1S diseña tu esquema de seguridad personalizado y te entrega una cotización sin costo.'),
         React.createElement('div', { style: { display: 'flex', gap: 14, justifyContent: 'center', marginTop: 36, flexWrap: 'wrap' } },
-          React.createElement(Btn, { variant: 'primary', size: 'lg', className: 'a1s-beacon', onClick: () => go('contacto'), iconRight: React.createElement(Icons.arrowUR, { size: 18 }) }, '¡Cotización gratuita!'),
-          React.createElement(Btn, { variant: 'on-dark', size: 'lg', icon: React.createElement(Icons.wa, { size: 18 }) }, '+57 305 771 0909')),
+          React.createElement(Btn, { variant: 'primary', size: 'lg', className: 'a1s-beacon', onClick: () => go('contacto'), iconRight: React.createElement(Icons.arrowUR, { size: 18 }) }, '¡Cotización gratuita!')),
         React.createElement('p', { style: { marginTop: 22, fontSize: '.8125rem', color: 'var(--dark-muted)', letterSpacing: '.04em' } }, 'Respuesta en menos de 24 horas · Atención 24/7 en operación'))));
 }
 
