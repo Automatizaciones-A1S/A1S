@@ -9,19 +9,17 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(-180px, -7vw, -24px)', bottom: 0, height: 'min(102%, 940px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-30px 30px 60px rgba(0,0,0,.5))' } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(-320px, -14vw, -40px)', bottom: 0, height: 'min(112%, 1040px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-30px 30px 60px rgba(0,0,0,.5))' } },
     // glow cálido detrás de la figura
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', left: '8%', right: '8%', bottom: '-2.5%', height: '9%', background: 'radial-gradient(50% 50% at 50% 50%, rgba(12,2,1,.55), transparent 70%)', filter: 'blur(10px)' } }),
     // FALLBACK: foto combinada (solo si faltaran las capas)
     React.createElement('img', { className: 'hero-fallback', src: 'assets/people/hero-escolta.png?v=2', alt: '', 'aria-hidden': true, loading: 'eager', decoding: 'async', fetchPriority: 'high', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'none' } }),
-    // CAPA 1 · CARRO (sin sirena, totalmente quieto) — desplazado a la derecha para no tapar los CTA
-    React.createElement('img', { src: 'assets/people/guarda-solo.png', alt: 'Escolta A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', left: '0.5%', width: '99%', bottom: '4.5%', height: '62%', objectFit: 'contain', objectPosition: '50% 100%' } }),
-    // CAPA 2 · GUARDA (idle sutil: respiración + balanceo de peso)
-    React.createElement('div', { className: reduce ? '' : 'a1s-idle-sway', style: { position: 'absolute', left: '22%', right: '22%', bottom: 0, height: '81%' } },
+    // Imagen principal del hero restaurada a la versión anterior
+    React.createElement('div', { className: reduce ? '' : 'a1s-idle-sway', style: { position: 'absolute', inset: 0 } },
       React.createElement('div', { className: reduce ? '' : 'a1s-idle-breathe', style: { position: 'absolute', inset: 0 } },
-        React.createElement('img', { src: 'assets/people/guarda-solo.png', alt: 'Escolta A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: '50% 100%' } }))));
+        React.createElement('img', { src: 'assets/people/hero-escolta.png?v=2', alt: 'Escolta A1S junto a patrulla', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { height: '100%', width: 'auto', display: 'block', maxWidth: 'none' } }))));
 }
 
 function HomeHero6({ go }) {
@@ -55,7 +53,7 @@ function HomeHero6({ go }) {
     React.createElement(HeroFigure6, null),
     // CONTENIDO
     React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--gutter)', width: '100%' } },
-      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '58%' } },
+      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '52%', paddingRight: 'clamp(48px, 7vw, 120px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
         React.createElement('h1', { style: { margin: '20px 0 0', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.7rem,6.6vw,6rem)', lineHeight: 0.96, letterSpacing: '-.03em', textTransform: 'uppercase', color: '#fff', textShadow: '0 4px 16px rgba(20,3,2,.45), 0 18px 60px rgba(20,3,2,.5)' } },
