@@ -11,6 +11,7 @@ const nodemailer = require('nodemailer');
 const ROOT = path.resolve(__dirname);
 const PORT = Number(process.env.PORT) || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
+const HTTPS_PORT = Number(process.env.HTTPS_PORT) || 8443;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -34,6 +35,19 @@ const MIME_TYPES = {
   '.webm': 'video/webm',
   '.ogv': 'video/ogg'
 };
+
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https: data:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:; media-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
+};
+
+function withSecurityHeaders(headers = {}) {
+  return { ...SECURITY_HEADERS, ...headers };
+}
 
 const SMTP_HOST = (process.env.SMTP_HOST || 'smtp.gmail.com').trim();
 const SMTP_SERVICE = (process.env.SMTP_SERVICE || 'gmail').trim();
@@ -124,65 +138,107 @@ if (transporter) {
   });
 }
 
-const server = http.createServer(async (req, res) => {
-  try {
-    const requestPath = decodeURIComponent(url.parse(req.url).pathname || '/');
-    const safePath = path.normalize(requestPath).replace(/^\.+([/\\])/, '');
-    let filePath = path.join(ROOT, safePath);
+function createRequestHandler() {
+  return async (req, res) => {
+    try {
+      const requestPath = decodeURIComponent(url.parse(req.url).pathname || '/');
+      const safePath = path.normalize(requestPath).replace(/^\.+([/\\])/, '');
+      let filePath = path.join(ROOT, safePath);
 
-    if (filePath.endsWith(path.sep)) {
-      filePath = path.join(filePath, 'index.html');
-    }
-
-    const stat = await fs.stat(filePath);
-    if (stat.isDirectory()) {
-      filePath = path.join(filePath, 'index.html');
-      await fs.access(filePath);
-    }
-
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    const body = await fs.readFile(filePath);
-
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(body);
-  } catch (error) {
-    if (req.url.startsWith('/api/pqrs/send')) {
-      try {
-        const chunks = [];
-        for await (const chunk of req) chunks.push(chunk);
-        const payload = JSON.parse(Buffer.concat(chunks).toString('utf8'));
-        const result = await sendMessage(payload);
-        res.writeHead(result.ok ? 200 : 500, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({
-          ok: result.ok,
-          reason: result.reason,
-          messageId: result.messageId,
-          payload: payload
-        }));
-        return;
-      } catch (parseError) {
-        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({ ok: false, reason: 'INVALID_PAYLOAD' }));
-        return;
+      if (filePath.endsWith(path.sep)) {
+        filePath = path.join(filePath, 'index.html');
       }
+
+      const stat = await fs.stat(filePath);
+      if (stat.isDirectory()) {
+        filePath = path.join(filePath, 'index.html');
+        await fs.access(filePath);
+      }
+
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      const body = await fs.readFile(filePath);
+
+      res.writeHead(200, withSecurityHeaders({ 'Content-Type': contentType }));
+      res.end(body);
+    } catch (error) {
+      if (req.url.startsWith('/api/pqrs/send')) {
+        try {
+          const chunks = [];
+          for await (const chunk of req) chunks.push(chunk);
+          const payload = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+          const result = await sendMessage(payload);
+          res.writeHead(result.ok ? 200 : 500, withSecurityHeaders({ 'Content-Type': 'application/json; charset=utf-8' }));
+          res.end(JSON.stringify({
+            ok: result.ok,
+            reason: result.reason,
+            messageId: result.messageId,
+            payload: payload
+          }));
+          return;
+        } catch (parseError) {
+          res.writeHead(400, withSecurityHeaders({ 'Content-Type': 'application/json; charset=utf-8' }));
+          res.end(JSON.stringify({ ok: false, reason: 'INVALID_PAYLOAD' }));
+          return;
+        }
+      }
+
+      res.writeHead(404, withSecurityHeaders({ 'Content-Type': 'text/plain; charset=utf-8' }));
+      res.end('404 Not Found');
     }
+  };
+}
 
-    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-    res.end('404 Not Found');
+function createServer() {
+  const server = http.createServer(createRequestHandler());
+  server.on('error', (error) => {
+    if (error.code === 'EADDRINUSE') {
+      console.error(`Port ${PORT} is already in use. Close the existing process or change PORT.`);
+      process.exit(1);
+    }
+    throw error;
+  });
+  return server;
+}
+
+async function startServers() {
+  const server = createServer();
+  server.listen(PORT, HOST, () => {
+    console.log(`Static server running at http://127.0.0.1:${PORT}`);
+    console.log(`Open http://localhost:${PORT} in your browser.`);
+    console.log('Press Ctrl+C to stop.');
+  });
+
+  const sslKeyPath = process.env.SSL_KEY_PATH;
+  const sslCertPath = process.env.SSL_CERT_PATH;
+  if (sslKeyPath && sslCertPath) {
+    try {
+      const httpsOptions = {
+        key: await fs.readFile(sslKeyPath),
+        cert: await fs.readFile(sslCertPath)
+      };
+      const httpsServer = https.createServer(httpsOptions, createRequestHandler());
+      httpsServer.on('error', (error) => {
+        if (error.code === 'EADDRINUSE') {
+          console.error(`HTTPS port ${HTTPS_PORT} is already in use.`);
+          process.exit(1);
+        }
+        throw error;
+      });
+      httpsServer.listen(HTTPS_PORT, HOST, () => {
+        console.log(`Secure server running at https://127.0.0.1:${HTTPS_PORT}`);
+      });
+    } catch (error) {
+      console.warn('HTTPS disabled because SSL certificate files were not found or could not be read:', error.message);
+    }
   }
-});
+}
 
-server.on('error', (error) => {
-  if (error.code === 'EADDRINUSE') {
-    console.error(`Port ${PORT} is already in use. Close the existing process or change PORT.`);
+if (require.main === module) {
+  startServers().catch((error) => {
+    console.error(error);
     process.exit(1);
-  }
-  throw error;
-});
+  });
+}
 
-server.listen(PORT, HOST, () => {
-  console.log(`Static server running at http://127.0.0.1:${PORT}`);
-  console.log(`Open http://localhost:${PORT} in your browser.`);
-  console.log('Press Ctrl+C to stop.');
-});
+module.exports = { createServer, createRequestHandler };

@@ -12,8 +12,10 @@ services:
     container_name: a1s-nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs:ro
     depends_on:
       - web
     restart: unless-stopped

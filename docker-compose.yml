@@ -4,8 +4,13 @@ services:
     container_name: a1s-web
     ports:
       - "80:8080"
-      - "443:8080"
+      - "443:8443"
     environment:
       HOST: 0.0.0.0
       PORT: 8080
+      HTTPS_PORT: 8443
+      SSL_CERT_PATH: /certs/fullchain.pem
+      SSL_KEY_PATH: /certs/privkey.pem
+    volumes:
+      - ./certs:/certs:ro
     restart: unless-stopped

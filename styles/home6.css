@@ -302,9 +302,18 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
   .a1s-hero6-figure { right: -42% !important; height: min(84%, 720px) !important; opacity: .94; }
 }
 @media (max-width: 860px) {
-  .a1s-hero6-figure { position: relative !important; right: auto !important; height: 56vh !important; margin: 26px auto 0 !important; }
+  .a1s-hero6-figure { position: relative !important; right: auto !important; left: 50% !important; transform: translateX(-50%) !important; height: 56vh !important; margin: 26px auto 0 !important; }
   .a1s-svc-grid { grid-template-columns: 1fr !important; }
   .a1s-portal-grid { grid-template-columns: 1fr !important; }
   .a1s-cert-grid { grid-template-columns: 1fr !important; }
   .a1s-about-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 760px) {
+  .a1s-hero6-figure { height: min(44vh, 360px) !important; opacity: .96; }
+  .a1s-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; width: 100% !important; max-width: none !important; gap: 1rem 1rem !important; }
+  .a1s-step6 { padding: 22px 18px 20px !important; }
+  .a1s-certseal { white-space: normal; padding: 14px 18px; }
+  .a1s-portal { min-height: 360px; padding: 1.35rem; }
+  .a1s-portal .portal-cta { padding: 12px 20px; font-size: .95rem; }
 }
