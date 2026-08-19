@@ -11,6 +11,11 @@
   var KEY = 'a1s-cookie-consent-v1';
   try { if (localStorage.getItem(KEY)) return; } catch (e) {}
 
+  // Sin bloqueo: mostrar la web de inmediato y solo guardar la preferencia en segundo plano.
+  try { localStorage.setItem(KEY, JSON.stringify({ ts: Date.now(), necesarias: true, analiticas: true, marketing: true, mode: 'all' })); } catch (e) {}
+  window.dispatchEvent(new CustomEvent('a1s:cookie-consent', { detail: { necesarias: true, analiticas: true, marketing: true, mode: 'all' } }));
+  return;
+
   /* ── Estilos (scoped, dependen de los tokens de marca de la página) ── */
   var css = `
   .a1s-ck-scrim { position: fixed; inset: 0; z-index: 2147483600; background: rgba(6,4,4,.55);
