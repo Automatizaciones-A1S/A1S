@@ -7,8 +7,8 @@ const querystring = require('querystring');
 const nodemailer = require('nodemailer');
 
 const ROOT = path.resolve(__dirname);
-const PORT = Number(process.env.PORT) || 8080;
-const HOST = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 8080;
+const host = process.env.HOST || '0.0.0.0';
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -192,7 +192,7 @@ function createServer() {
   const server = http.createServer(createRequestHandler());
   server.on('error', (error) => {
     if (error.code === 'EADDRINUSE') {
-      console.error(`Port ${PORT} is already in use. Close the existing process or change PORT.`);
+      console.error(`Port ${port} is already in use. Close the existing process or change PORT.`);
       process.exit(1);
     }
     throw error;
@@ -202,10 +202,13 @@ function createServer() {
 
 async function startServer() {
   const server = createServer();
-  await new Promise((resolve) => server.listen(PORT, HOST, resolve));
-  console.log(`Static server running at http://127.0.0.1:${PORT}`);
-  console.log(`Open http://localhost:${PORT} in your browser.`);
-  console.log('Press Ctrl+C to stop.');
+  await new Promise((resolve, reject) => {
+    server.once('error', reject);
+    server.listen(port, host, () => {
+      console.log(`Servidor activo en ${host}:${port}`);
+      resolve();
+    });
+  });
   return server;
 }
 
