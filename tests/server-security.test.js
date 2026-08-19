@@ -26,3 +26,15 @@ test('adds safe security headers to the home page response', async () => {
     await new Promise((resolve, reject) => server.close((error) => (error ? reject(error) : resolve())));
   }
 });
+
+test('adds HSTS when the request arrives through HTTPS', async () => {
+  const { server, port } = await startServer();
+  try {
+    const response = await fetch(`http://127.0.0.1:${port}/`, {
+      headers: { 'x-forwarded-proto': 'https' }
+    });
+    assert.equal(response.headers.get('strict-transport-security'), 'max-age=31536000; includeSubDomains');
+  } finally {
+    await new Promise((resolve, reject) => server.close((error) => (error ? reject(error) : resolve())));
+  }
+});

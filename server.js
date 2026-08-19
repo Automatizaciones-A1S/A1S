@@ -41,8 +41,10 @@ const SECURITY_HEADERS = {
   'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https: data:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:; media-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
 };
 
-function withSecurityHeaders(headers = {}) {
-  return { ...SECURITY_HEADERS, ...headers };
+function withSecurityHeaders(req, headers = {}) {
+  const isHttps = String(req.headers['x-forwarded-proto'] || req.headers['x-forwarded-protocol'] || '').toLowerCase() === 'https' || req.connection?.encrypted;
+  const hstsHeader = isHttps ? { 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains' } : {};
+  return { ...SECURITY_HEADERS, ...hstsHeader, ...headers };
 }
 
 const SMTP_HOST = (process.env.SMTP_HOST || 'smtp.gmail.com').trim();
@@ -156,7 +158,7 @@ function createRequestHandler() {
       const contentType = MIME_TYPES[ext] || 'application/octet-stream';
       const body = await fs.readFile(filePath);
 
-      res.writeHead(200, withSecurityHeaders({ 'Content-Type': contentType }));
+      res.writeHead(200, withSecurityHeaders(req, { 'Content-Type': contentType }));
       res.end(body);
     } catch (error) {
       if (req.url.startsWith('/api/pqrs/send')) {
@@ -165,7 +167,7 @@ function createRequestHandler() {
           for await (const chunk of req) chunks.push(chunk);
           const payload = JSON.parse(Buffer.concat(chunks).toString('utf8'));
           const result = await sendMessage(payload);
-          res.writeHead(result.ok ? 200 : 500, withSecurityHeaders({ 'Content-Type': 'application/json; charset=utf-8' }));
+          res.writeHead(result.ok ? 200 : 500, withSecurityHeaders(req, { 'Content-Type': 'application/json; charset=utf-8' }));
           res.end(JSON.stringify({
             ok: result.ok,
             reason: result.reason,
@@ -174,13 +176,13 @@ function createRequestHandler() {
           }));
           return;
         } catch (parseError) {
-          res.writeHead(400, withSecurityHeaders({ 'Content-Type': 'application/json; charset=utf-8' }));
+          res.writeHead(400, withSecurityHeaders(req, { 'Content-Type': 'application/json; charset=utf-8' }));
           res.end(JSON.stringify({ ok: false, reason: 'INVALID_PAYLOAD' }));
           return;
         }
       }
 
-      res.writeHead(404, withSecurityHeaders({ 'Content-Type': 'text/plain; charset=utf-8' }));
+      res.writeHead(404, withSecurityHeaders(req, { 'Content-Type': 'text/plain; charset=utf-8' }));
       res.end('404 Not Found');
     }
   };
