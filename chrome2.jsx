@@ -103,7 +103,7 @@ function Footer({ go }) {
 
 /* ── FAB WhatsApp (visual) ────────────────────────────────────────────── */
 function WhatsFab() {
-  return React.createElement('button', { className: 'a1s-int wa-fab', title: 'WhatsApp +57 305 771 0909', 'aria-label': 'WhatsApp' }, React.createElement(Icons.wa, { size: 28 }));
+  return null;
 }
 
 /* ── Breadcrumb / mini línea de tiempo de navegación ──────────────────── */
