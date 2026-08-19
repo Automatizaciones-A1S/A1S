@@ -47,7 +47,7 @@ function TalentoView({ go }) {
           React.createElement('div', { style: { display: 'flex', gap: 32, marginTop: 36 } },
             React.createElement(Stat, { value: 3500, label: 'Colaboradores', dark: true }),
             React.createElement(Stat, { value: 5, prefix: '', label: 'Regionales', dark: true }))),
-        React.createElement(Reveal, { delay: 120 }, React.createElement(MediaPanel, { scene: 'talento', ratio: '4 / 5', label: 'El equipo A1S', status: 'EQUIPO', photo: 'assets/CAMBIO PERSONA 2.png', fit: 'cover' })))),
+        React.createElement(Reveal, { delay: 120 }, React.createElement(MediaPanel, { scene: 'talento', ratio: '4 / 5', label: 'El equipo A1S', status: 'EQUIPO', photo: 'assets/CAMBIO PERSONA A1S 1.jpeg', fit: 'cover' })))), 
 
     /* Pilares EVP */
     React.createElement('section', { style: SECTION },
