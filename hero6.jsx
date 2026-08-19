@@ -17,7 +17,7 @@ function HeroFigure6() {
     // FALLBACK: foto combinada (solo si faltaran las capas)
     React.createElement('img', { className: 'hero-fallback', src: 'assets/people/hero-escolta.png?v=2', alt: '', 'aria-hidden': true, loading: 'eager', decoding: 'async', fetchPriority: 'high', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'none' } }),
     // CAPA 1 · CARRO (sin sirena, totalmente quieto) — desplazado a la derecha para no tapar los CTA
-    React.createElement('img', { src: 'assets/people/carro-solo.png', alt: 'Patrulla A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', left: '0.5%', width: '99%', bottom: '4.5%', height: '62%', objectFit: 'contain', objectPosition: '50% 100%' } }),
+    React.createElement('img', { src: 'assets/CAMBIO PERSONA A1S 1.jpeg', alt: 'Patrulla A1S', loading: 'eager', decoding: 'async', fetchPriority: 'high', draggable: false, style: { position: 'absolute', left: '0.5%', width: '99%', bottom: '4.5%', height: '62%', objectFit: 'contain', objectPosition: '50% 100%' } }),
     // CAPA 2 · GUARDA (idle sutil: respiración + balanceo de peso)
     React.createElement('div', { className: reduce ? '' : 'a1s-idle-sway', style: { position: 'absolute', left: '22%', right: '22%', bottom: 0, height: '81%' } },
       React.createElement('div', { className: reduce ? '' : 'a1s-idle-breathe', style: { position: 'absolute', inset: 0 } },
