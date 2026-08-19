@@ -13,7 +13,7 @@ function startServer() {
   });
 }
 
-test('adds security headers to the home page response', async () => {
+test('adds safe security headers to the home page response', async () => {
   const { server, port } = await startServer();
   try {
     const response = await fetch(`http://127.0.0.1:${port}/`);
@@ -21,6 +21,7 @@ test('adds security headers to the home page response', async () => {
     assert.match(response.headers.get('content-security-policy') || '', /default-src/);
     assert.equal(response.headers.get('referrer-policy'), 'strict-origin-when-cross-origin');
     assert.equal(response.headers.get('x-frame-options'), 'SAMEORIGIN');
+    assert.equal(response.headers.get('strict-transport-security'), null);
   } finally {
     await new Promise((resolve, reject) => server.close((error) => (error ? reject(error) : resolve())));
   }

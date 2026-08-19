@@ -1,17 +1,14 @@
 require('dotenv').config();
 
 const http = require('http');
-const https = require('https');
 const fs = require('fs').promises;
 const path = require('path');
-const url = require('url');
 const querystring = require('querystring');
 const nodemailer = require('nodemailer');
 
 const ROOT = path.resolve(__dirname);
 const PORT = Number(process.env.PORT) || 8080;
 const HOST = process.env.HOST || '0.0.0.0';
-const HTTPS_PORT = Number(process.env.HTTPS_PORT) || 8443;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -41,7 +38,6 @@ const SECURITY_HEADERS = {
   'X-Frame-Options': 'SAMEORIGIN',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()',
-  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
   'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https: data:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:; media-src 'self' data: https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
 };
 
@@ -141,7 +137,8 @@ if (transporter) {
 function createRequestHandler() {
   return async (req, res) => {
     try {
-      const requestPath = decodeURIComponent(url.parse(req.url).pathname || '/');
+      const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+      const requestPath = decodeURIComponent(requestUrl.pathname || '/');
       const safePath = path.normalize(requestPath).replace(/^\.+([/\\])/, '');
       let filePath = path.join(ROOT, safePath);
 
@@ -201,41 +198,17 @@ function createServer() {
   return server;
 }
 
-async function startServers() {
+async function startServer() {
   const server = createServer();
-  server.listen(PORT, HOST, () => {
-    console.log(`Static server running at http://127.0.0.1:${PORT}`);
-    console.log(`Open http://localhost:${PORT} in your browser.`);
-    console.log('Press Ctrl+C to stop.');
-  });
-
-  const sslKeyPath = process.env.SSL_KEY_PATH;
-  const sslCertPath = process.env.SSL_CERT_PATH;
-  if (sslKeyPath && sslCertPath) {
-    try {
-      const httpsOptions = {
-        key: await fs.readFile(sslKeyPath),
-        cert: await fs.readFile(sslCertPath)
-      };
-      const httpsServer = https.createServer(httpsOptions, createRequestHandler());
-      httpsServer.on('error', (error) => {
-        if (error.code === 'EADDRINUSE') {
-          console.error(`HTTPS port ${HTTPS_PORT} is already in use.`);
-          process.exit(1);
-        }
-        throw error;
-      });
-      httpsServer.listen(HTTPS_PORT, HOST, () => {
-        console.log(`Secure server running at https://127.0.0.1:${HTTPS_PORT}`);
-      });
-    } catch (error) {
-      console.warn('HTTPS disabled because SSL certificate files were not found or could not be read:', error.message);
-    }
-  }
+  await new Promise((resolve) => server.listen(PORT, HOST, resolve));
+  console.log(`Static server running at http://127.0.0.1:${PORT}`);
+  console.log(`Open http://localhost:${PORT} in your browser.`);
+  console.log('Press Ctrl+C to stop.');
+  return server;
 }
 
 if (require.main === module) {
-  startServers().catch((error) => {
+  startServer().catch((error) => {
     console.error(error);
     process.exit(1);
   });
