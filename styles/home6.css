@@ -90,7 +90,7 @@ html.a1s-static .a1s-idle-sway, html.a1s-static .a1s-idle-breathe,
 html.a1s-no-idle .a1s-idle-sway, html.a1s-no-idle .a1s-idle-breathe { animation: none; }
 
 /* ── Mapa de cobertura (imagen neón + pines de regional + radar) ──────── */
-.a1s-map-wrap { position: relative; overflow: hidden; margin-left: 0; }
+.a1s-map-wrap { position: relative; overflow: hidden; margin-left: 0; margin-inline: clamp(6px, 1vw, 12px); }
 .a1s-map-wrap::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background:
     repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 34px),
@@ -213,7 +213,7 @@ html.a1s-static .a1s-beacon::before { animation: none; }
 /* ── Cierre Clientes | Talento v6 ──────────────────────────────────────── */
 .a1s-portal { position: relative; overflow: hidden; border: none; cursor: pointer;
   text-align: left; color: #fff; display: flex; flex-direction: column; justify-content: flex-end;
-  min-height: clamp(420px, 46vw, 640px); padding: clamp(2rem,4vw,4.5rem);
+  min-height: clamp(420px, 46vw, 640px); padding: clamp(2rem,4vw,4.5rem); margin-inline: clamp(6px, 1vw, 12px);
   transition: filter .35s var(--ease-standard); }
 .a1s-portal .portal-img { transition: transform .8s var(--ease-out), opacity .45s; }
 .a1s-portal:hover .portal-img { transform: scale(1.05) translateY(-6px); opacity: 1; }
@@ -289,8 +289,8 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
 
 /* Hero: 2×2 compacto, con espacio lateral mínimo para evitar el hueco visible */
 .a1s-hero-copy {
-  max-width: min(52%, 640px);
-  padding-right: clamp(12px, 2.2vw, 28px);
+  max-width: min(50%, 620px);
+  padding-right: clamp(10px, 2vw, 24px);
 }
 .a1s-hero-stats {
   grid-template-columns: repeat(2, minmax(0, max-content));

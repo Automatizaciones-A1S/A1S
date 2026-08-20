@@ -153,12 +153,12 @@ html.a1s-static .a1s-pay-line::after { animation: none; content: none; }
 .a1s-swcta { display: inline-flex; align-items: center; gap: 8px; color: var(--a1s-red); font-weight: 700; margin-top: 2px; }
 .a1s-swback { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0 0 0; margin-bottom: 16px; color: var(--dark-text); font-weight: 700; background: none; border: 0; cursor: pointer; }
 .a1s-swback:hover { color: var(--a1s-red); }
-.a1s-guide-steps { display: grid; gap: 18px; margin-top: 28px; }
-.a1s-gstep { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 22px 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-card); box-shadow: var(--shadow-sm); }
-.a1s-gnum { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--a1s-red) 12%, transparent); color: var(--a1s-red); font-family: var(--font-display); font-size: 1rem; font-weight: 800; }
-.a1s-gstep h3 { margin: 0; font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; }
-.a1s-gstep p { margin: 8px 0 0; color: var(--text-muted); font-size: .95rem; line-height: 1.65; }
-.a1s-gshots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+.a1s-guide-steps { display: grid; gap: 18px; margin-top: 28px; width: 100%; }
+.a1s-gstep { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 20px 20px 18px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-card); box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box; }
+.a1s-gnum { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--a1s-red) 12%, transparent); color: var(--a1s-red); font-family: var(--font-display); font-size: .95rem; font-weight: 800; flex: none; }
+.a1s-gstep h3 { margin: 0; font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; }
+.a1s-gstep p { margin: 8px 0 0; color: var(--text-muted); font-size: .92rem; line-height: 1.6; }
+.a1s-gshots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; width: 100%; }
 .a1s-shot { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #fff; }
 .a1s-shot img { display: block; width: 100%; height: auto; object-fit: cover; }
 .a1s-shot-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--border); background: #faf8f8; font-size: .74rem; color: var(--text-muted); }
@@ -174,7 +174,7 @@ html.a1s-static .a1s-pay-line::after { animation: none; content: none; }
 .a1s-gcap { margin: 10px 0 0; color: var(--text-muted); font-size: .82rem; line-height: 1.45; }
 .a1s-gcap-link { margin-left: 8px; color: var(--a1s-red); font-weight: 600; }
 .a1s-gnote { display: flex; align-items: flex-start; gap: 8px; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--a1s-red) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--a1s-red) 18%, var(--border)); }
-@media (max-width: 760px) { .a1s-swnotice { flex-direction: column; align-items: flex-start; padding: 18px; } .a1s-swgrid { grid-template-columns: 1fr; } .a1s-swcard { padding: 18px; gap: 10px; } .a1s-gshots { grid-template-columns: 1fr; } .a1s-gstep { grid-template-columns: 1fr; gap: 12px; } }
+@media (max-width: 760px) { .a1s-swnotice { flex-direction: column; align-items: flex-start; padding: 18px; } .a1s-swgrid { grid-template-columns: 1fr; } .a1s-swcard { padding: 18px; gap: 10px; } .a1s-guide-steps { gap: 14px; margin-top: 22px; } .a1s-gshots { grid-template-columns: 1fr; gap: 10px; } .a1s-gstep { grid-template-columns: 1fr; gap: 12px; padding: 16px 14px; } .a1s-gnum { width: 38px; height: 38px; } .a1s-gstep h3 { font-size: .98rem; } .a1s-gstep p { font-size: .9rem; } .a1s-shot-url { max-width: 100%; font-size: .68rem; } .a1s-gnote { padding: 10px 12px; } }
 
 /* ── Blog: portada con fotografía real ────────────────────────────────── */
 .a1s-blog-feat, .a1s-blog-card { padding: 0; -webkit-appearance: none; appearance: none; }
@@ -225,7 +225,7 @@ html.a1s-static .a1s-blog-photo-img { transition: none; }
 
 /* Destacada inmersiva: foto a sangre + velo + texto encima */
 .a1s-feat2 { position: relative; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; min-height: clamp(400px, 56vh, 620px);
-  border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--dark-line); background: #0A0A0C;
+  border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--dark-line); background: #0A0A0C; margin-inline: clamp(6px, 1vw, 12px);
   text-align: left; font: inherit; color: #fff; cursor: pointer; padding: 0; -webkit-appearance: none; appearance: none;
   box-shadow: 0 40px 90px -50px rgba(0,0,0,.7); transition: transform .35s var(--ease-out), box-shadow .35s; }
 .a1s-feat2:hover { transform: translateY(-4px); box-shadow: 0 50px 100px -46px rgba(192,35,27,.4); }

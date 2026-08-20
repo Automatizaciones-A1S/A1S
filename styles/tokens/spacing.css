@@ -22,7 +22,7 @@
   --container-max: 100%;
   --container-wide: 100%;
   --container-narrow: 760px;   /* prosa / formularios */
-  --gutter: 0px; /* @kind spacing */
+  --gutter: clamp(14px, 1.8vw, 24px); /* @kind spacing */
 
   /* Breakpoints (referencia): sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536 */
 
@@ -55,6 +55,6 @@
 
 @media (max-width: 760px) {
   :root {
-    --gutter: 16px;
+    --gutter: 18px;
   }
 }
