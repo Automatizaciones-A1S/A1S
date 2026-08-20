@@ -19,10 +19,10 @@
   --section-y: clamp(4rem, 10vw, 9rem); /* @kind spacing */
 
   /* ── Layout ──────────────────────────────────────────────── */
-  --container-max: 100%;
+  --container-max: 1400px;
   --container-wide: 100%;
   --container-narrow: 760px;   /* prosa / formularios */
-  --gutter: 0px; /* @kind spacing */
+  --gutter: clamp(24px, 3vw, 44px); /* @kind spacing */
 
   /* Breakpoints (referencia): sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536 */
 

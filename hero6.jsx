@@ -52,7 +52,7 @@ function HomeHero6({ go }) {
     !reduce && React.createElement(window.Embers6, null),
     React.createElement(HeroFigure6, null),
     // CONTENIDO
-    React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 var(--gutter)', width: '100%', boxSizing: 'border-box' } },
+    React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 calc(var(--gutter) + 4px)', width: '100%', boxSizing: 'border-box' } },
       React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '48%', paddingRight: 'clamp(16px, 3vw, 36px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
