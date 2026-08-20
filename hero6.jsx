@@ -9,7 +9,7 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(8px, 1.2vw, 20px)', bottom: '-1%', height: 'min(86%, 720px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-12px 14px 34px rgba(0,0,0,.3))', opacity: .98 } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(8px, 1.1vw, 20px)', bottom: '-1%', height: 'min(92%, 780px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-14px 16px 36px rgba(0,0,0,.32))', opacity: .98 } },
     // glow cálido detrás de la figura
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
