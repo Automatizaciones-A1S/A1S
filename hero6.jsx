@@ -9,7 +9,7 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(10px, 1.4vw, 24px)', bottom: '-1%', height: 'min(78%, 640px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-12px 14px 34px rgba(0,0,0,.3))', opacity: .98 } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(8px, 1.2vw, 20px)', bottom: '-1%', height: 'min(86%, 720px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-12px 14px 34px rgba(0,0,0,.3))', opacity: .98 } },
     // glow cálido detrás de la figura
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
@@ -53,7 +53,7 @@ function HomeHero6({ go }) {
     React.createElement(HeroFigure6, null),
     // CONTENIDO
     React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 var(--gutter)', width: '100%', boxSizing: 'border-box' } },
-      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '46%', paddingRight: 'clamp(16px, 3vw, 36px)' } },
+      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '48%', paddingRight: 'clamp(16px, 3vw, 36px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
         React.createElement('h1', { style: { margin: '16px 0 0', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.35rem,4.8vw,4.7rem)', lineHeight: 0.95, letterSpacing: '-.03em', textTransform: 'uppercase', color: '#fff', textShadow: '0 4px 16px rgba(20,3,2,.45), 0 14px 42px rgba(20,3,2,.44)' } },
