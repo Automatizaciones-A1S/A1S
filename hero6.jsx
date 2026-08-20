@@ -9,9 +9,9 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(8px, 1vw, 20px)', bottom: '-1%', height: 'min(74%, 600px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-10px 12px 28px rgba(0,0,0,.28))', opacity: .98 } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(4px, 1.2vw, 16px)', bottom: 0, height: 'min(86%, 700px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-16px 18px 42px rgba(0,0,0,.4))' } },
     // glow cálido detrás de la figura
-    React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-4% -8%', background: 'radial-gradient(44% 50% at 52% 60%, rgba(255,96,72,.26), transparent 70%)', filter: 'blur(20px)' } }),
+    React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', left: '8%', right: '8%', bottom: '-2.5%', height: '9%', background: 'radial-gradient(50% 50% at 50% 50%, rgba(12,2,1,.55), transparent 70%)', filter: 'blur(10px)' } }),
     // FALLBACK: foto combinada (solo si faltaran las capas)
@@ -37,7 +37,7 @@ function HomeHero6({ go }) {
   const reset = () => secRef.current && secRef.current.querySelectorAll('[data-px]').forEach((l) => l.style.transform = '');
 
   return React.createElement('section', { ref: secRef, onMouseMove: onMove, onMouseLeave: reset, className: 'a1s-noise', 'data-screen-label': 'Hero',
-    style: { position: 'relative', minHeight: '82svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(62px,7.4vh,86px) 0 clamp(24px,3.8vh,44px)',
+    style: { position: 'relative', minHeight: '88svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(74px,8.8vh,104px) 0 clamp(28px,4.6vh,52px)',
       background: 'radial-gradient(95% 110% at 82% 6%, #E13E2C 0%, transparent 52%), linear-gradient(152deg, #CE2A1F 0%, #B11C14 36%, #71100A 70%, #230503 100%)' } },
     // texturas de profundidad
     React.createElement('div', { className: 'a1s-gridtex', style: { opacity: .8 } }),
@@ -53,7 +53,7 @@ function HomeHero6({ go }) {
     React.createElement(HeroFigure6, null),
     // CONTENIDO
     React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 var(--gutter)', width: '100%', boxSizing: 'border-box' } },
-      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '46%', paddingRight: 'clamp(16px, 3vw, 36px)' } },
+      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '50%', paddingRight: 'clamp(10px, 2vw, 28px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
         React.createElement('h1', { style: { margin: '16px 0 0', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.35rem,4.8vw,4.7rem)', lineHeight: 0.95, letterSpacing: '-.03em', textTransform: 'uppercase', color: '#fff', textShadow: '0 4px 16px rgba(20,3,2,.45), 0 14px 42px rgba(20,3,2,.44)' } },
