@@ -6,7 +6,7 @@ const { Logo, Btn, Badge, Icons, RED, WRAP } = window;
 const NAV_LINKS = [
   ['servicios', 'Servicios'],
   ['cobertura', 'Cobertura'],
-  ['certificaciones', 'Certificaciones'],
+  ['certificaciones', 'Certificados'],
   ['blog', 'Blog'],
   ['pagos', 'Pagos'],
 ];

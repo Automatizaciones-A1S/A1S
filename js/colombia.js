@@ -42,7 +42,7 @@
 
     { type: 'sucursal',  city: 'Barranquilla',    dpto: 'Atlántico',      addr: 'Cra 57 N.° 99A-65, Torres del Atlántico, Of. 908', px: 37.5, py: 12.5 },
     { type: 'sucursal',  city: 'Bucaramanga',     dpto: 'Santander',      addr: 'Calle 21 N.° 31-77',                               px: 49.1, py: 32.2 },
-    { type: 'sucursal',  city: 'Cali',            dpto: 'Valle del Cauca',addr: 'Calle 5 N.° 38-25',                                px: 25.6, py: 51.0 },
+    { type: 'sucursal',  city: 'Cali',            dpto: 'Valle del Cauca',addr: 'Centro Empresarial Chipichape, Oficina 611-612',  px: 25.6, py: 51.0 },
     { type: 'sucursal',  city: 'Cartagena',       dpto: 'Bolívar',        addr: 'Calle 6A N.° 3-17, piso 4, Of. 408',               px: 32.6, py: 15.4 },
     { type: 'sucursal',  city: 'Medellín',        dpto: 'Antioquia',      addr: 'Cra 43A N.° 16A Sur-38, interior 0203',            px: 32.2, py: 36.9 },
     { type: 'sucursal',  city: 'Pasto',           dpto: 'Nariño',         addr: 'Cra 26 N.° 20-48',                                 px: 20.7, py: 62.4 },
