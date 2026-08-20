@@ -168,23 +168,6 @@
 </template>
 
 <!-- 3D / efectos (plain JS, requieren THREE) -->
-<script>
-  (() => {
-    const apply = () => {
-      document.querySelectorAll('img').forEach((img) => {
-        if (!img.hasAttribute('loading') || img.getAttribute('loading') === 'lazy') {
-          img.setAttribute('loading', 'eager');
-        }
-        if (!img.hasAttribute('decoding')) {
-          img.setAttribute('decoding', 'async');
-        }
-      });
-    };
-    apply();
-    const observer = new MutationObserver(apply);
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-  })();
-</script>
 <script defer src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
 <script defer src="js/cursor.js?v=2"></script>
 <script defer src="js/cursor-aim.js"></script>

@@ -9,7 +9,7 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(4px, 1.2vw, 16px)', bottom: 0, height: 'min(86%, 700px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-16px 18px 42px rgba(0,0,0,.4))' } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(0px, 1vw, 18px)', bottom: 0, height: 'min(92%, 760px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-18px 20px 46px rgba(0,0,0,.42))' } },
     // glow cálido detrás de la figura
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
@@ -37,7 +37,7 @@ function HomeHero6({ go }) {
   const reset = () => secRef.current && secRef.current.querySelectorAll('[data-px]').forEach((l) => l.style.transform = '');
 
   return React.createElement('section', { ref: secRef, onMouseMove: onMove, onMouseLeave: reset, className: 'a1s-noise', 'data-screen-label': 'Hero',
-    style: { position: 'relative', minHeight: '88svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(74px,8.8vh,104px) 0 clamp(28px,4.6vh,52px)',
+    style: { position: 'relative', minHeight: '92svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(84px,10vh,120px) 0 clamp(32px,5vh,60px)',
       background: 'radial-gradient(95% 110% at 82% 6%, #E13E2C 0%, transparent 52%), linear-gradient(152deg, #CE2A1F 0%, #B11C14 36%, #71100A 70%, #230503 100%)' } },
     // texturas de profundidad
     React.createElement('div', { className: 'a1s-gridtex', style: { opacity: .8 } }),
