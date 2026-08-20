@@ -52,8 +52,8 @@ function HomeHero6({ go }) {
     !reduce && React.createElement(window.Embers6, null),
     React.createElement(HeroFigure6, null),
     // CONTENIDO
-    React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--gutter)', width: '100%' } },
-      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '52%', paddingRight: 'clamp(48px, 7vw, 120px)' } },
+    React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 clamp(10px, 1.6vw, 18px)', width: '100%' } },
+      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '52%', paddingRight: 'clamp(20px, 4vw, 56px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
         React.createElement('h1', { style: { margin: '20px 0 0', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.7rem,6.6vw,6rem)', lineHeight: 0.96, letterSpacing: '-.03em', textTransform: 'uppercase', color: '#fff', textShadow: '0 4px 16px rgba(20,3,2,.45), 0 18px 60px rgba(20,3,2,.5)' } },

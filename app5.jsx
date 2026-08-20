@@ -15,7 +15,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 const VIEWS = {
   home: HomeView6, servicios: ServiciosView, cobertura: CoberturaView,
   certificaciones: CertificacionesView, talento: TalentoView, contacto: ContactoView,
-  pagos: PagosView, certificado: CertificadoView, blog: BlogView, postulacion: PostulacionView,
+  pagos: PagosView, certificado: CertificadoView, 'portal-personas': CertificadoView, blog: BlogView, postulacion: PostulacionView,
 };
 const DARK_HERO = ['home', 'servicios', 'cobertura', 'certificaciones', 'talento', 'pagos', 'certificado', 'blog'];
 

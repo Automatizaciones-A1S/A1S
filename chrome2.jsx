@@ -7,6 +7,7 @@ const NAV_LINKS = [
   ['servicios', 'Servicios'],
   ['cobertura', 'Cobertura'],
   ['certificaciones', 'Certificados'],
+  ['portal-personas', 'Portal Personas'],
   ['blog', 'Blog'],
   ['pagos', 'Pagos'],
 ];
@@ -48,18 +49,20 @@ function Navbar({ route, go, darkHero }) {
         React.createElement('button', { className: 'a1s-int a1s-burger', onClick: () => setOpen(true), 'aria-label': 'Menú',
           style: { display: 'none', background: 'none', border: 'none', cursor: 'pointer', color: onDark ? '#fff' : 'var(--text)', padding: 6 } }, React.createElement(Icons.menu, { size: 26 })))),
     // Menú móvil full-screen
-    open && React.createElement('div', { className: 'a1s-dark', style: { position: 'fixed', inset: 0, zIndex: 90, background: 'var(--dark-bg)', color: '#fff', display: 'flex', flexDirection: 'column', padding: '22px var(--gutter)' } },
-      React.createElement('div', { style: { display: 'flex', alignItems: 'center' } },
-        React.createElement('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginRight: 12, lineHeight: 0 } },
-          React.createElement(Logo, { color: '#fff', height: 32 })),
-        React.createElement('button', { className: 'a1s-int', onClick: () => setOpen(false), 'aria-label': 'Cerrar', style: { marginLeft: 'auto', background: 'none', border: 'none', color: '#fff', cursor: 'pointer' } }, React.createElement(Icons.close, { size: 28 }))),
-      React.createElement('nav', { style: { display: 'flex', flexDirection: 'column', gap: 4, marginTop: 40 } },
+    open && React.createElement('div', { className: 'a1s-dark', style: { position: 'fixed', inset: 0, zIndex: 90, background: 'var(--dark-bg)', color: '#fff', display: 'flex', flexDirection: 'column', padding: '14px calc(var(--gutter) + 2px) 16px', backdropFilter: 'blur(10px)' } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 } },
+        React.createElement('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, lineHeight: 0 } },
+          React.createElement(Logo, { color: '#fff', height: 26 })),
+        React.createElement('button', { className: 'a1s-int', onClick: () => setOpen(false), 'aria-label': 'Cerrar', style: { background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 6, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' } }, React.createElement(Icons.close, { size: 22 }))),
+      React.createElement('nav', { style: { display: 'flex', flexDirection: 'column', gap: 1, marginTop: 10 } },
         [['home', 'Inicio'], ...NAV_LINKS, ['talento', 'Trabaja con nosotros'], ['contacto', 'Contacto']].map(([id, label]) =>
           React.createElement('a', { key: id, className: 'a1s-int', onClick: () => navTo(id),
-            style: { cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '2rem', letterSpacing: '-.02em', padding: '12px 0', borderBottom: '1px solid var(--dark-line)', color: route === id ? 'var(--a1s-red-400)' : '#fff' } }, label))),
-      React.createElement('div', { style: { marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 14 } },
+            style: { cursor: 'pointer', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '.96rem', letterSpacing: '-.01em', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,.12)', color: route === id ? 'var(--a1s-red-400)' : '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+            React.createElement('span', null, label),
+            route === id ? React.createElement('span', { style: { color: 'var(--a1s-red-400)', fontSize: '.8rem' } }, '●') : null))),
+      React.createElement('div', { style: { marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 10 } },
         React.createElement(Btn, { variant: 'primary', size: 'lg', onClick: () => navTo('contacto') }, '¡Cotización gratuita!'),
-        React.createElement('span', { style: { color: 'var(--dark-muted)', fontSize: '.875rem' } }, 'Atención 24/7'))));
+        React.createElement('span', { style: { color: 'var(--dark-muted)', fontSize: '.8rem', textAlign: 'center' } }, 'Atención 24/7'))));
 }
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
@@ -81,7 +84,7 @@ function Footer({ go }) {
             React.createElement(Badge, { variant: 'on-dark' }, 'OEA'), React.createElement(Badge, { variant: 'on-dark' }, 'BASC')),
           React.createElement('p', { style: { marginTop: 20, fontSize: '.8125rem', color: 'var(--dark-muted)', letterSpacing: '.02em' } }, 'By Somni Capital Group')),
         col('Servicios', [['Seguridad Física', 'servicios'], ['Seguridad Electrónica', 'servicios'], ['Móvil & GPS', 'servicios'], ['Drones', 'servicios'], ['Ciberseguridad', 'servicios']]),
-        col('Empresa', [['Quiénes somos', 'servicios'], ['Cobertura', 'cobertura'], ['Certificaciones', 'certificaciones'], ['Blog · Noticias', 'blog'], ['Pagos en línea', 'pagos'], ['Certificado laboral', 'certificado'], ['Contacto', 'contacto'], ['PQRS · Atención al ciudadano', null, 'PQRS.html']]),
+        col('Empresa', [['Quiénes somos', 'servicios'], ['Cobertura', 'cobertura'], ['Certificaciones', 'certificaciones'], ['Portal Personas', 'certificado'], ['Blog · Noticias', 'blog'], ['Pagos en línea', 'pagos'], ['Contacto', 'contacto'], ['PQRS · Atención al ciudadano', null, 'PQRS.html']]),
         col('Talento', [['Trabaja con nosotros', 'talento'], ['Cultura', 'talento'], ['Vacantes', 'talento'], ['Proceso de selección', 'talento']]),
         col('Legal', [['Política SARLAFT', null, 'legal.html#sarlaft'], ['Alcohol y Drogas', null, 'legal.html#alcohol-drogas'], ['Seguridad Vial', null, 'legal.html#seguridad-vial'], ['Política Integral', null, 'legal.html#integral'], ['Prevención de acoso laboral y sexual', null, 'legal.html#acoso'], ['Equidad de género e inclusión', null, 'legal.html#equidad-genero'], ['Tratamiento de datos personales', null, 'legal.html#tratamiento-datos'], ['Reglamento Interno de Trabajo', null, 'legal.html#reglamento-interno']])),
       // Regionales
@@ -98,7 +101,7 @@ function Footer({ go }) {
         React.createElement('a', { className: 'a1s-int', onClick: () => go('pagos'), style: { fontSize: '.8125rem', color: 'var(--a1s-red-400)', fontWeight: 700, textDecoration: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 7 } },
           React.createElement(Icons.lock, { size: 15 }), 'Pagos en línea'),
         React.createElement('a', { className: 'a1s-int', onClick: () => go('certificado'), style: { fontSize: '.8125rem', color: 'var(--a1s-red-400)', fontWeight: 700, textDecoration: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 7 } },
-          React.createElement(Icons.cert, { size: 15 }), 'Certificado laboral'),
+          React.createElement(Icons.cert, { size: 15 }), 'Portal Personas'),
         React.createElement('span', { style: { marginLeft: 'auto', fontSize: '.8125rem', color: 'var(--dark-muted)', display: 'inline-flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' } }, '© ' + new Date().getFullYear() + ' A1S Security Group', React.createElement('span', { 'aria-hidden': true }, '·'), React.createElement('a', { className: 'a1s-int', href: 'legal.html#tratamiento-datos', style: { color: 'inherit', textDecoration: 'none' } }, 'Política de datos'), React.createElement('span', { 'aria-hidden': true }, '·'), React.createElement('a', { className: 'a1s-int', href: 'legal.html', style: { color: 'inherit', textDecoration: 'none' } }, 'Legal')))));
 }
 
@@ -108,7 +111,7 @@ function WhatsFab() {
 }
 
 /* ── Breadcrumb / mini línea de tiempo de navegación ──────────────────── */
-const ROUTE_LABELS = { home: 'Inicio', servicios: 'Servicios', cobertura: 'Cobertura', certificaciones: 'Certificaciones', blog: 'Blog', pagos: 'Pagos', talento: 'Talento', contacto: 'Contacto', postulacion: 'Postulación' };
+const ROUTE_LABELS = { home: 'Inicio', servicios: 'Servicios', cobertura: 'Cobertura', certificaciones: 'Certificaciones', 'portal-personas': 'Portal Personas', blog: 'Blog', pagos: 'Pagos', talento: 'Talento', contacto: 'Contacto', postulacion: 'Postulación', certificado: 'Portal Personas' };
 
 function Breadcrumb({ trail, go }) {
   const [hide, setHide] = React.useState(false);

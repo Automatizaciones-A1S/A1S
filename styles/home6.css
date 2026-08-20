@@ -287,10 +287,10 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
 .a1s-stats6 { display: grid; grid-template-columns: repeat(4, auto); gap: clamp(1.6rem,4vw,4rem); width: fit-content; }
 @media (max-width: 860px) { .a1s-stats6 { grid-template-columns: repeat(2, 1fr); width: 100%; } }
 
-/* Hero: 2×2 compacto, anclado a la izquierda para que el carro no tape las cifras */
+/* Hero: 2×2 compacto, con espacio lateral mínimo para evitar el hueco visible */
 .a1s-hero-copy {
   max-width: min(52%, 640px);
-  padding-right: clamp(60px, 8vw, 140px);
+  padding-right: clamp(12px, 2.2vw, 28px);
 }
 .a1s-hero-stats {
   grid-template-columns: repeat(2, minmax(0, max-content));
@@ -300,11 +300,11 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
   position: relative; z-index: 8;
 }
 @media (max-width: 1100px) {
-  .a1s-hero-copy { max-width: min(56%, 620px); padding-right: clamp(70px, 12vw, 160px); }
+  .a1s-hero-copy { max-width: min(56%, 620px); padding-right: clamp(14px, 2.4vw, 32px); }
   .a1s-hero-stats { max-width: 48%; }
 }
 @media (max-width: 860px)  {
-  .a1s-hero-copy { max-width: min(100%, 620px); padding-right: clamp(96px, 24vw, 180px); }
+  .a1s-hero-copy { max-width: min(100%, 620px); padding-right: clamp(10px, 2.2vw, 18px); }
   .a1s-hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }  .a1s-mappin-label { white-space: normal; left: 12px; max-width: 120px; }
   .a1s-mappin-label b { font-size: .78rem; }
   .a1s-mappin-label span { font-size: .66rem; }}
@@ -329,7 +329,7 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
     z-index: 3;
     pointer-events: none;
   }
-  .a1s-hero-copy { padding-right: clamp(96px, 22vw, 170px) !important; }
+  .a1s-hero-copy { padding-right: clamp(10px, 2.2vw, 18px) !important; }
   .a1s-svc-grid { grid-template-columns: 1fr !important; }
   .a1s-portal-grid { grid-template-columns: 1fr !important; }
   .a1s-cert-grid { grid-template-columns: 1fr !important; }
@@ -343,7 +343,7 @@ html.a1s-aim-on input, html.a1s-aim-on textarea, html.a1s-aim-on select { cursor
     bottom: -4% !important;
     opacity: .96;
   }
-  .a1s-hero-copy { padding-right: 88px !important; }
+  .a1s-hero-copy { padding-right: 10px !important; }
   .a1s-hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; width: 100% !important; max-width: none !important; gap: 1rem 1rem !important; }
   .a1s-step6 { padding: 22px 18px 20px !important; }
   .a1s-certseal { white-space: normal; padding: 12px 16px; max-width: min(100%, 260px); }

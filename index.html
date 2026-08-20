@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="styles/home6.css?v=6">
 <link rel="stylesheet" href="styles/additions.css?v=6">
 <style>
-  html, body { margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; width: 100%; }
   body { font-family: var(--font-sans); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
   * { box-sizing: border-box; }
-  #root { min-height: 100vh; }
+  #root, .a1s-route { min-height: 100vh; width: 100%; max-width: 100%; }
   .a1s-app-loader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; background: radial-gradient(circle at top, #1c1514 0%, #09090b 60%, #050505 100%); color: #fff; }
   .a1s-app-loader__card { width: min(92vw, 320px); padding: 26px 24px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: rgba(8,8,11,.86); box-shadow: 0 24px 70px rgba(0,0,0,.35); text-align: center; }
   .a1s-app-loader__ring { width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 50%; border: 3px solid rgba(255,255,255,.16); border-top-color: var(--a1s-red); animation: a1s-spin .9s linear infinite; }
