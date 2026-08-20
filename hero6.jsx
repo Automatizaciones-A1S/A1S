@@ -9,7 +9,7 @@ const { Reveal, Btn, Stat, Icons, useReduce } = window;
 
 function HeroFigure6() {
   const reduce = useReduce();
-  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(0px, 1vw, 18px)', bottom: 0, height: 'min(92%, 760px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-18px 20px 46px rgba(0,0,0,.42))' } },
+  return React.createElement('div', { className: 'a1s-hero-figure a1s-hero6-figure', style: { position: 'absolute', right: 'clamp(10px, 1.4vw, 24px)', bottom: '-1%', height: 'min(78%, 640px)', aspectRatio: '0.86', zIndex: 5, pointerEvents: 'none', filter: 'drop-shadow(-12px 14px 34px rgba(0,0,0,.3))', opacity: .98 } },
     // glow cálido detrás de la figura
     React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: '-6% -12%', background: 'radial-gradient(46% 56% at 52% 62%, rgba(255,96,72,.42), transparent 70%)', filter: 'blur(26px)' } }),
     // sombra de piso (ancla la figura)
@@ -37,7 +37,7 @@ function HomeHero6({ go }) {
   const reset = () => secRef.current && secRef.current.querySelectorAll('[data-px]').forEach((l) => l.style.transform = '');
 
   return React.createElement('section', { ref: secRef, onMouseMove: onMove, onMouseLeave: reset, className: 'a1s-noise', 'data-screen-label': 'Hero',
-    style: { position: 'relative', minHeight: '92svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(84px,10vh,120px) 0 clamp(32px,5vh,60px)',
+    style: { position: 'relative', minHeight: '86svh', overflow: 'hidden', display: 'flex', alignItems: 'center', padding: 'clamp(72px,8.8vh,104px) 0 clamp(24px,4vh,48px)',
       background: 'radial-gradient(95% 110% at 82% 6%, #E13E2C 0%, transparent 52%), linear-gradient(152deg, #CE2A1F 0%, #B11C14 36%, #71100A 70%, #230503 100%)' } },
     // texturas de profundidad
     React.createElement('div', { className: 'a1s-gridtex', style: { opacity: .8 } }),
@@ -53,7 +53,7 @@ function HomeHero6({ go }) {
     React.createElement(HeroFigure6, null),
     // CONTENIDO
     React.createElement('div', { style: { position: 'relative', zIndex: 6, maxWidth: '100%', margin: '0 auto', padding: '0 var(--gutter)', width: '100%', boxSizing: 'border-box' } },
-      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '50%', paddingRight: 'clamp(10px, 2vw, 28px)' } },
+      React.createElement(Reveal, { className: 'a1s-hero-copy', style: { maxWidth: '46%', paddingRight: 'clamp(16px, 3vw, 36px)' } },
         React.createElement('p', { style: { margin: 0, display: 'inline-flex', alignItems: 'center', gap: 10, fontStyle: 'italic', fontWeight: 600, fontSize: '.8125rem', textTransform: 'uppercase', letterSpacing: '.24em', color: 'rgba(255,255,255,.92)' } },
           React.createElement(Icons.shield, { size: 16 }), 'Seguridad privada para Colombia · Desde 1971'),
         React.createElement('h1', { style: { margin: '16px 0 0', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.35rem,4.8vw,4.7rem)', lineHeight: 0.95, letterSpacing: '-.03em', textTransform: 'uppercase', color: '#fff', textShadow: '0 4px 16px rgba(20,3,2,.45), 0 14px 42px rgba(20,3,2,.44)' } },
