@@ -5,7 +5,7 @@
 const { Reveal: NgReveal, Btn: NgBtn, Badge: NgBadge, SectionHead: NgHead, Icons: NgIcons, RED: NG_RED, WRAP: NG_WRAP, SECTION: NG_SECTION } = window;
 
 const PRONOS_URL_NOMINA = 'http://atalaya.pronos.at/';
-const PRONOS_URL_CERT = 'https://a1s.nexoapp.co/empleado_certificado_laboral_1.php';
+const PRONOS_URL_CERT = 'https://atalaya.pronos.at/';
 const SEMANTICA_URL = 'https://empleado.co/';
 
 /* ── Captura enmarcada: ventana de navegador, teléfono o lámina completa ── */
