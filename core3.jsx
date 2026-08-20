@@ -165,7 +165,7 @@ function SectionHead({ eyebrow, title, lead, dark, center, max = '22ch', style =
     lead && React.createElement('p', { style: { margin: '18px 0 0', color: dark ? 'var(--dark-muted)' : 'var(--text-muted)', fontSize: '1.0625rem', lineHeight: 1.6, maxWidth: '54ch', marginInline: center ? 'auto' : undefined } }, lead));
 }
 
-const WRAP = { maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--gutter)' };
+const WRAP = { width: '100%', maxWidth: 'var(--container-max)', margin: '0 auto', padding: '0 var(--gutter)', boxSizing: 'border-box' };
 const SECTION = { padding: 'var(--section-y) 0' };
 
 /* ── SpotlightCard — glow que sigue el cursor + leve tilt 3D ───────────── */
